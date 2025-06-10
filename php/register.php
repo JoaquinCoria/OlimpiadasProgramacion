@@ -28,7 +28,7 @@
                     echo "<script>alert('Usuario registrado'); window.location = 'sesion.php'</script>";
                 }else{
                     echo "<div class='alert'>Error: Hay un error !</div>";
-                };
+                }
             }else{
                 echo "<div class='alert'>Error: La contraseña no cumple con el formato </div>";
             }
@@ -60,7 +60,7 @@
                 <label for="clave">Ingrese la contraseña</label><br>
                 <input class="relleno" type="password" name="clave" id="" placeholder="password" autocomplete="off" required>
             </div>
-            <button class="BotonEnviar" type="submit">Registrarse</button><br><br>
+            <button class="btnEnviar" type="submit">Registrarse</button><br><br>
         </form>
     <div class="footer">
                 <a href="../index.php">Volver</a>
