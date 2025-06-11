@@ -53,7 +53,7 @@ if(isset($_POST['btnEnviar'])){
             </div>
             <div class="footer">
                 <a href="../index.php">Volver</a>
-                <a href="registrar.php">Registrarse</a>
+                <a href="register.php">Registrarse</a>
             </div>
         </form>
     </div>
