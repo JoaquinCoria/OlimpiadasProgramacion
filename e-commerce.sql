@@ -47,6 +47,15 @@ CREATE TABLE `categoria` (
   `nombre` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`idCategoria`, `nombre`) VALUES
+(1, 'Auto'),
+(2, 'Vuelos'),
+(3, 'Hospeajes');
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +96,15 @@ CREATE TABLE `producto` (
   `nombre` varchar(20) DEFAULT NULL,
   `fkIdCategoria` int(7) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `producto`
+--
+
+INSERT INTO `producto` (`idProducto`, `descripcion`, `precio`, `nombre`, `fkIdCategoria`) VALUES
+(1, 'auto de gama media m', 25000, 'Ford ka', 1),
+(2, 'Vuelo clase economic', 1500000, 'Miami', 2),
+(3, 'Hotel tres estrellas', 249999, 'Hotel El Momito', 3);
 
 -- --------------------------------------------------------
 
@@ -163,6 +181,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
+  MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT;
 
 --
@@ -181,6 +200,7 @@ ALTER TABLE `pedidoshistoricos`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
+  MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
   MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT;
 
 --
