@@ -1,14 +1,11 @@
 <?php
-$host = 'localhost';
-$usuario = 'root';
-$contrasena = '';
-$basededatos = 'e-commerce';
-
-$conexion = new mysqli($host, $usuario, $contraseña, $basededatos);
-
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
-}
-
-$conexion->close();
+    $servidor = "localhost";
+    $usuario = "root";
+    $password = "";
+    $basedatos = "e-commerce";
+    $conexion = mysqli_connect($servidor,$usuario,$password,$basedatos);
+    if(!$conexion)
+    {
+        die("Conexión fallida: " . mysqli_connect_error());
+    }
 ?>
