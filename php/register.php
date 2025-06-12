@@ -6,7 +6,7 @@
         $password = $_POST['clave'];
         $email = $_POST['mail'];
         
-        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE nombreu ='".$usuario."'");
+        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE nombre ='".$usuario."'");
         
         $num = mysqli_num_rows($query);
         function validarPassword($contrasenia)
@@ -21,7 +21,7 @@
             if(validarPassword($password))
             {
                 //insertar usuarios
-                $sql_insert = "INSERT INTO usuario(nombreu,mail,clave) 
+                $sql_insert = "INSERT INTO usuario(nombre,email,contrasenia) 
                 VALUES ('$usuario','$email','$password')";
                 $query= mysqli_query($conexion,$sql_insert);
                 if($query){
@@ -64,10 +64,7 @@
         </form>
     <div class="footer">
                 <a href="../index.php">Volver</a>
-                <a href="login.php">Iniciar sesion</a>
-                <?php
-                echo $_POST['nombreUsuario'];
-                ?>
+                <a href="login.php">Iniciar sesion</a>                
             </div>
     </header>
 </body>

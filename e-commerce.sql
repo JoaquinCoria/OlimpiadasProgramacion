@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2025 a las 00:21:12
+-- Tiempo de generación: 12-06-2025 a las 23:33:14
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.0.32
 
@@ -182,6 +182,7 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `compra`
@@ -200,6 +201,7 @@ ALTER TABLE `pedidoshistoricos`
 --
 ALTER TABLE `producto`
   MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
