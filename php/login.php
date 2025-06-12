@@ -13,7 +13,7 @@ if(isset($_POST['btnEnviar'])){
     $nombreUsuario = $_POST['nombreUsuario'];
     $clave = $_POST['clave'];
 
-    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombreu = '".$nombreUsuario."' AND clave = '".$clave."'");
+    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND contrasenia = '".$clave."'");
     $nr = mysqli_num_rows($query);
     if($nr == 1){
         $_SESSION['nombreUsuario'] = $nombreUsuario;
