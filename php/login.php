@@ -10,17 +10,17 @@ if(isset($_POST['btnEnviar'])){
     if(!$conexion){
         die("No hay conexion: ".mysqli_connect_error());
     }
-    $nombreUsuario= $_POST['nombreUsuario'];
+    $nombreUsuario = $_POST['nombreUsuario'];
     $clave = $_POST['clave'];
 
-    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombreUsuario = '".$nombreUsuario."' AND clave = '".$clave."'");
+    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombreu = '".$nombreUsuario."' AND clave = '".$clave."'");
     $nr = mysqli_num_rows($query);
     if($nr == 1){
         $_SESSION['nombreUsuario'] = $nombreUsuario;
         header("location: ../index.php");
         die();
     } else if ($nr == 0){
-        echo "<script>alert('Usuario no registrado'); window.location = '../index.php'</script>";
+        echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
     } 
 }
 ?>
@@ -36,10 +36,10 @@ if(isset($_POST['btnEnviar'])){
 <header>
     <div class="contenedor">
         <h1 class="titulo">Iniciar sesión</h1>
-        <form action="sesion.php" method="POST" class="formulario">
+        <form action="login.php" method="POST" class="formulario">
             <div class="labelInput">
                 <label for="nombre">Ingrese el usuario</label>
-                <input class="relleno" type="text" name="nombreu" placeholder="usuario" required autocomplete="off"> 
+                <input class="relleno" type="text" name="nombreUsuario" placeholder="usuario" required autocomplete="off"> 
             </div>
             <div class="labelInput">
                 <label for="email">Ingrese el email</label>
