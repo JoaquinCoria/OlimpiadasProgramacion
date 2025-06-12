@@ -6,14 +6,14 @@
         $password = $_POST['clave'];
         $email = $_POST['mail'];
         
-        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE nombreUsuario='".$usuario."'");
+        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE nombreu ='".$usuario."'");
         
         $num = mysqli_num_rows($query);
         function validarPassword($contrasenia)
         {
             $pattern = '/^[\\da-zA-Z]{8,}$/';
-            $isPasswordValid = preg_match($pattern, $contrasenia);
-
+            $contraseniaValida = preg_match($pattern, $contrasenia);
+            return $contraseniaValida;
         }
         if($num > 0){
             echo "<script>alert('Usuario en uso, intente con otro nombre'); window.location='register.php'</script>";
@@ -21,11 +21,11 @@
             if(validarPassword($password))
             {
                 //insertar usuarios
-                $sql_insert = "INSERT INTO usuario(nombreUsuario,mail,clave) 
+                $sql_insert = "INSERT INTO usuario(nombreu,mail,clave) 
                 VALUES ('$usuario','$email','$password')";
                 $query= mysqli_query($conexion,$sql_insert);
                 if($query){
-                    echo "<script>alert('Usuario registrado'); window.location = 'sesion.php'</script>";
+                    echo "<script>alert('Usuario registrado'); window.location = 'login.php'</script>";
                 }else{
                     echo "<div class='alert'>Error: Hay un error !</div>";
                 }
@@ -47,7 +47,7 @@
     <header>
     <div class="contenedor">
         <h1>Registrarse</h1>
-        <form action="registrar.php" method="post" class="Formulario">
+        <form action="register.php" method="post" class="Formulario">
             <div class="labelInput">
                 <label for="nombre">Ingrese el usuario</label><br>
                 <input class="input" type="text" name="nombreUsuario" placeholder="Usuario" autocomplete="off" required>
@@ -65,6 +65,9 @@
     <div class="footer">
                 <a href="../index.php">Volver</a>
                 <a href="login.php">Iniciar sesion</a>
+                <?php
+                echo $_POST['nombreUsuario'];
+                ?>
             </div>
     </header>
 </body>

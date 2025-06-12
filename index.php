@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <a href="./php/login.php">Login</a>
+    <a href="./php/register.php">Registrarses</a>
 </body>
 </html>
