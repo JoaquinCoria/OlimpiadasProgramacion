@@ -17,6 +17,10 @@ if(isset($_POST['btnEnviar'])){
     $nr = mysqli_num_rows($query);
     if($nr == 1){
         $_SESSION['nombreUsuario'] = $nombreUsuario;
+        $resultadoUsuario = mysqli_query($conexion, "SELECT idUsuario FROM usuario WHERE nombre = '" . $_SESSION['nombreUsuario'] . "';");
+        $filaUsuario = mysqli_fetch_assoc($resultadoUsuario); // Obtener el resultado como array asociativo
+        $idUsuario = $filaUsuario['idUsuario']; // Extraer el ID
+        $_SESSION['idUsuario'] = $idUsuario;
         header("location: ../index.php");
         die();
     } else if ($nr == 0){

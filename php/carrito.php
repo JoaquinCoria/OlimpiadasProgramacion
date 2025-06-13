@@ -1,10 +1,16 @@
 <?php
 include('conexion.php');
 session_start();
-//Mostrar productos
-$idUsuario = mysqli_query($conexion, "SELECT idUsuario FROM usuario WHERE nombre = '".$_SESSION['nombreUsuario']."';s");
-$productos = mysqli_query($conexion, "SELECT fkIdProducto FROM carrito where fkIdUsuario = '".$idUsuario."'");
-var_dump($productos);
+
+if (!isset($_SESSION['nombreUsuario'])) {
+    header('location:../index.php');
+    exit(); // Siempre es buena práctica agregar exit después de un header
+}
+
+// Obtener el ID del usuario
+
+// Obtener los productos del carrito del usuario
+$resultadoProductos = mysqli_query($conexion, "SELECT fkIdProducto FROM carrito WHERE fkIdUsuario = '$idUsuario';");
 
 
 //Agregar productos
