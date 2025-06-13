@@ -2,27 +2,28 @@
 include('conexion.php');
 session_start();
 
+// Si se ha iniciado sesion se direcciona a la página principal
 if(isset($_SESSION['nombreUsuario'])){
     header('location:../index.php');
 }
-
-if(isset($_POST['btnEnviar'])){
-    if(!$conexion){
-        die("No hay conexion: ".mysqli_connect_error());
+// Sino va al login
+    if(isset($_POST['btnEnviar'])){
+        if(!$conexion){
+            die("No hay conexion: ".mysqli_connect_error());
+        }
+        $nombreUsuario = $_POST['nombreUsuario'];
+        $clave = $_POST['clave'];
+        $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND contrasenia = '".$clave."'");
+        $nr = mysqli_num_rows($query);
+        if($nr == 1){
+            //si el usuario esta ingresando por primera vez se guarda su nombre en la sesion
+            $_SESSION['nombreUsuario']=$nombreUsuario;
+            header("location: ../index.php");
+            die();
+            }else if ($nr == 0){
+                echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
+            } 
     }
-    $nombreUsuario = $_POST['nombreUsuario'];
-    $clave = $_POST['clave'];
-
-    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND contrasenia = '".$clave."'");
-    $nr = mysqli_num_rows($query);
-    if($nr == 1){
-        $_SESSION['nombreUsuario'] = $nombreUsuario;
-        header("location: ../index.php");
-        die();
-    } else if ($nr == 0){
-        echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
-    } 
-}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,21 +34,20 @@ if(isset($_POST['btnEnviar'])){
     <title>Login</title>
 </head>
 <body>
-<header>
     <div class="contenedor">
         <h1 class="titulo">Iniciar sesión</h1>
         <form action="login.php" method="POST" class="formulario">
             <div class="labelInput">
                 <label for="nombre">Ingrese el usuario</label>
-                <input class="relleno" type="text" name="nombreUsuario" placeholder="usuario" required autocomplete="off"> 
+                <input type="text" name="nombreUsuario" placeholder="Usuario" required > 
             </div>
             <div class="labelInput">
                 <label for="email">Ingrese el email</label>
-                <input class="relleno" type="email" name="mail" placeholder="e-mail" autocomplete="off">
+                <input type="email" name="mail" placeholder="E-mail">
             </div>
             <div class="labelInput">
                 <label for="clave">Ingrese la contraseña</label>
-                <input class="relleno" type="password" name="clave" placeholder="password" required autocomplete="off">
+                <input type="password" name="clave" id="" placeholder="Contraseña" required>
             </div>
             <input type="submit" value="Enviar" name="btnEnviar" class="btnEnviar">
             </div>
@@ -57,6 +57,5 @@ if(isset($_POST['btnEnviar'])){
             </div>
         </form>
     </div>
-</header>
 </body>
 </html>
