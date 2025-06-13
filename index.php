@@ -30,7 +30,7 @@ session_start();
         </div>
         <div class="registrarse">
             <img src="./img/usuario.svg" alt="Usuario">
-            <?php if (isset($_SESSION['usuario'])): ?>
+            <?php if (isset($_SESSION['nombreUsuario'])): ?>
                 <a href="./php/logout.php">Cerrar Sesión</a>
             <?php else: ?>
                 <a href="./php/login.php">Iniciar Sesión</a>
