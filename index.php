@@ -7,8 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="./php/login.php">Login</a>
-    <a href="./php/register.php">Registrarses</a>
     <header>
         <div class="logo_principal">
             <img src="./img/logo.png" alt="Logo">
