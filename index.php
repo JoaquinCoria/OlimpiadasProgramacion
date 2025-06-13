@@ -1,10 +1,13 @@
+<?php 
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style/index.css">
-    <title>Document</title>
+    <title>Olimpiada de Programación</title>
 </head>
 <body>
     <header>
@@ -13,21 +16,26 @@
         </div>
         <div class="iconos">
             <div class="alojamientos">
-                <p>Alojamientos</p>
                 <img src="./img/cama.svg" alt="Alojamientos">
+                <p>Alojamientos</p>
             </div>
             <div class="vuelos">
-                <p>Vuelos</p>
                 <img src="./img/avion.svg" alt="Vuelos">
+                <p>Vuelos</p>
             </div>
             <div class="autos">
-                <p>Autos</p>
                 <img src="./img/auto.svg" alt="Autos">
+                <p>Autos</p>
             </div>
         </div>
         <div class="registrarse">
-            <img src="./img/usuario.svg" alt="Registrarse">
-            <a href="./php/register.php">Registrarse</a>
+            <img src="./img/usuario.svg" alt="Usuario">
+            <?php if (isset($_SESSION['nombreUsuario'])): ?>
+                <a href="./php/logout.php">Cerrar Sesión</a>
+            <?php else: ?>
+                <a href="./php/login.php">Iniciar Sesión</a>
+                <a href="./php/register.php">Registrarse</a>
+            <?php endif; ?>
         </div>
     </header>
 
