@@ -31,7 +31,7 @@ $result = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css">
+    <link rel="stylesheet" href="./style/index.css?2">
     <title>Olimpiada de Programación</title>
 </head>
 <body>
@@ -80,7 +80,9 @@ $result = mysqli_query($conexion, $sql);
             }
             if(isset($_SESSION['nombreUsuario']))
             {
-                echo '<input type="submit" name="pedir" class="pedir" value="pedir">';
+                echo '<div class="enviar">';
+                echo '<input type="submit" name="pedir" class="pedir" value="Pedir">';
+                echo '</div>';
             }
             echo "</form>";
         } else {

@@ -128,3 +128,27 @@ footer {
     filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
     transition: transform 0.3s;
 }
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.formularioProductos{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+input[type="checkbox"] {
+    display: none;
+}
+.producto{
+    background-color: white;
+    height: 10vh;
+    width: 10vw;
+    margin: 10px;
+    padding: 10px;
+}
+input[type="submit"] {
+    padding: 10px;
+    margin: 10px;
+}
