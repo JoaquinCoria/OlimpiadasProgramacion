@@ -4,27 +4,32 @@ session_start();
 
 if (!isset($_SESSION['nombreUsuario'])) {
     header('location:../index.php');
-    exit(); // Siempre es buena práctica agregar exit después de un header
+    exit();
 }
-
-// Obtener el ID del usuario
-
-// Obtener los productos del carrito del usuario
-
+// Obtiene los ids de los productos del carrito del usuario
 $resultadoProductos =  mysqli_query($conexion, "SELECT fkIdProducto FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
-$row = mysqli_fetch_array($resultadoProductos, MYSQLI_ASSOC);
-var_dump($resultadoProductos);
-foreach($resultadoProductos as $i=>$idProducto)
-{
 
-    $datosProductos[$i] = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto = ".$idProducto.";"));
+// Obtiene la información de los productos que tiene en el carrito el usuario
+$idProductos = [];
+while ($row = $resultadoProductos->fetch_assoc()) {
+    $idProductos[] = $row;
+    $resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($row['fkIdProducto']).";");
+    $infoProductos[] = $resultadoInfoProductos->fetch_assoc();
 }
-var_dump($datosProductos);
 
-//query = "SELECT * FROM producto WHERE idProducto = "
 
-//Eliminar productos
-
+//Muestra los datos de los productos
+foreach($infoProductos as $i=>$val)
+{
+    echo "<div class='producto'>";
+        echo '<input type="checkbox" id="producto'.$infoProductos[$i]['idProducto'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
+        <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
+        <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
+        <p>' . $infoProductos[$i]['descripcion'] . '</p>
+        <p>' . $infoProductos[$i]['precio'] . ' </p>
+        </label>';
+    echo "</div>";
+}
 
 ?>
 
