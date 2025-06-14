@@ -24,6 +24,22 @@ if(isset($_SESSION['nombreUsuario'])){
                 echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
             } 
     }
+    $nombreUsuario = $_POST['nombreUsuario'];
+    $clave = $_POST['clave'];
+
+    $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND contrasenia = '".$clave."'");
+    $nr = mysqli_num_rows($query);
+    if($nr == 1){
+        $_SESSION['nombreUsuario'] = $nombreUsuario;
+        $resultadoUsuario = mysqli_query($conexion, "SELECT idUsuario FROM usuario WHERE nombre = '" . $_SESSION['nombreUsuario'] . "';");
+        $filaUsuario = mysqli_fetch_assoc($resultadoUsuario); // Obtener el resultado como array asociativo
+        $idUsuario = $filaUsuario['idUsuario']; // Extraer el ID
+        $_SESSION['idUsuario'] = $idUsuario;
+        header("location: ../index.php");
+        die();
+    } else if ($nr == 0){
+        echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
+    } 
 ?>
 <!DOCTYPE html>
 <html lang="es">
