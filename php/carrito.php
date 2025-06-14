@@ -18,19 +18,26 @@ while ($row = $resultadoProductos->fetch_assoc()) {
 }
 
 
-//Muestra los datos de los productos
-foreach($infoProductos as $i=>$val)
-{
-    echo "<div class='producto'>";
-        echo '<input type="checkbox" id="producto'.$infoProductos[$i]['idProducto'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
-        <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
-        <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
-        <p>' . $infoProductos[$i]['descripcion'] . '</p>
-        <p>' . $infoProductos[$i]['precio'] . ' </p>
-        </label>';
-    echo "</div>";
-}
+//Muestra los datos de los 
 
+if (mysqli_num_rows($resultadoProductos) > 0){
+    echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
+    foreach($infoProductos as $i=>$val)
+    {
+        echo "<div class='producto'>";
+            echo '<input type="checkbox" id="producto'.$infoProductos[$i]['idProducto'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
+            <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
+            <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
+            <p>' . $infoProductos[$i]['descripcion'] . '</p>
+            <p>' . $infoProductos[$i]['precio'] . ' </p>
+            </label>';
+        echo "</div>";
+    }
+    echo '<input type="submit" name="eliminar" class="eliminar" value="Eliminar">';
+echo "</form>";
+}else{
+    echo "No hay productos en el carrito";
+}
 ?>
 
 <!DOCTYPE html>
