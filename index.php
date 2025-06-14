@@ -67,7 +67,7 @@ $result = mysqli_query($conexion, $sql);
     <div class="container">
         <?php
         if (mysqli_num_rows($result) > 0){
-            echo '<form action="index.php" method="post" class="formularioProductos">';
+            echo '<form action="./php/agregarProductoCarrito.php" method="post" class="formularioProductos">';
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='producto'>";
                 echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
