@@ -1,3 +1,31 @@
+<?php 
+include_once('./php/conexion.php');
+session_start(); 
+if(isset($_POST['categoria']))
+{
+    switch($_POST['categoria'])
+    {
+        case 'Todo':
+            $sql = "SELECT * FROM producto";
+            break;
+        case 'Auto':
+            $sql = "SELECT * FROM producto WHERE categoria = 'Auto'";
+            break;
+        case 'Pasaje':
+            $sql = "SELECT * FROM producto WHERE categoria = 'Vuelos'";
+            break;
+        case 'Hospedaje':
+            $sql = "SELECT * FROM producto WHERE categoria = 'Hospedajes'";
+            break;
+        default:
+            echo "No Se encontro la categoria";
+            break;
+    }
+}else{
+    $sql = "SELECT * FROM producto";
+}
+$result = mysqli_query($conexion, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
