@@ -10,11 +10,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
 // Obtener el ID del usuario
 
 // Obtener los productos del carrito del usuario
-$resultadoProductos = mysqli_query($conexion, "SELECT fkIdProducto FROM carrito WHERE fkIdUsuario = '$idUsuario';");
-
-
-//Agregar productos
-
+$resultadoProductos = mysqli_query($conexion, "SELECT fkIdProducto FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
 
 
 
