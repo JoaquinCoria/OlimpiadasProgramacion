@@ -1,12 +1,11 @@
 <?php
 include('conexion.php');
 session_start();
-
 // Si se ha iniciado sesion se direcciona a la página principal
 if(isset($_SESSION['nombreUsuario'])){
     header('location:../index.php');
-}
-// Sino va al login
+}else{
+// Sino va al 
     if(isset($_POST['btnEnviar'])){
         if(!$conexion){
             die("No hay conexion: ".mysqli_connect_error());
@@ -17,13 +16,21 @@ if(isset($_SESSION['nombreUsuario'])){
         $nr = mysqli_num_rows($query);
         if($nr == 1){
             //si el usuario esta ingresando por primera vez se guarda su nombre en la sesion
-            $_SESSION['nombreUsuario']=$nombreUsuario;
+            // $_SESSION['nombreUsuario']=$nombreUsuario;
+            // header("location: ../index.php");
+            // die();
+            $_SESSION['nombreUsuario'] = $nombreUsuario;
+            $resultadoUsuario = mysqli_query($conexion, "SELECT idUsuario FROM usuario WHERE nombre = '" . $nombreUsuario . "';");
+            $filaUsuario = mysqli_fetch_assoc($resultadoUsuario); // Obtener el resultado como array asociativo
+            $idUsuario = $filaUsuario['idUsuario']; // Extraer el ID
+            $_SESSION['idUsuario'] = $idUsuario;
             header("location: ../index.php");
             die();
-            }else if ($nr == 0){
-                echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
-            } 
+        }else if ($nr == 0){
+            echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
+        }
     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
