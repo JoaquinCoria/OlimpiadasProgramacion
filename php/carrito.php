@@ -21,6 +21,7 @@ while ($row = $resultadoProductos->fetch_assoc()) {
 //Muestra los datos de los 
 
 
+$precioTotal = 0;
 ?>
 
 <!DOCTYPE html>
@@ -38,6 +39,7 @@ while ($row = $resultadoProductos->fetch_assoc()) {
             echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
             foreach($infoProductos as $i=>$val)
             {
+                $precioTotal += $infoProductos[$i]['precio'];
                 echo "<div class='producto'>";
                     echo '<input type="checkbox" id="producto'.$infoProductos[$i]['idProducto'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
                     <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
@@ -47,6 +49,7 @@ while ($row = $resultadoProductos->fetch_assoc()) {
                     </label>';
                 echo "</div>";
             }
+            echo "<p>Precio total: $".$precioTotal."</p>";
             echo '<input type="submit" name="eliminar" class="eliminar" value="Eliminar">';
             echo "</form>";
         }else{
