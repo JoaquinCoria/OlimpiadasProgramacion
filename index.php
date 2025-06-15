@@ -8,14 +8,14 @@ if(isset($_POST['categoria']))
         case 'Todo':
             $sql = "SELECT * FROM producto";
             break;
+        case 'Alojamiento':
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 3";
+            break;
+        case 'Vuelo':
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 2";
+            break;
         case 'Auto':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Auto'";
-            break;
-        case 'Pasaje':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Vuelos'";
-            break;
-        case 'Infantiles':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Hospedajes'";
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 1";
             break;
         default:
             echo "No Se encontro la categoria";
@@ -24,6 +24,7 @@ if(isset($_POST['categoria']))
 }else{
     $sql = "SELECT * FROM producto";
 }
+
 $result = mysqli_query($conexion, $sql);
 ?>
 <!DOCTYPE html>
@@ -39,20 +40,20 @@ $result = mysqli_query($conexion, $sql);
         <div class="logo_principal">
             <a href="index.php"><img src="./img/logo.png" alt="Logo"></a>
         </div>
-        <div class="iconos">
-            <div class="alojamientos">
+        <form action="index.php" method="post" class = "iconos">
+            <button type="submit" name="categoria" value="Alojamiento" class="alojamientos">
                 <img src="./img/cama.svg" alt="Alojamientos">
                 <p>Alojamientos</p>
-            </div>
-            <div class="vuelos">
+            </button>
+            <button type="submit" name="categoria" value="Vuelo" class="vuelos">
                 <img src="./img/avion.svg" alt="Vuelos">
                 <p>Vuelos</p>
-            </div>
-            <div class="autos">
+            </button>
+            <button type="submit" name="categoria" value="Auto" class="autos">
                 <img src="./img/auto.svg" alt="Autos">
                 <p>Autos</p>
-            </div>
-        </div>
+            </button>
+        </form>
         <div class="headerDerecha">
             <?php if (isset($_SESSION['nombreUsuario'])){
             echo '<div class="carrito">

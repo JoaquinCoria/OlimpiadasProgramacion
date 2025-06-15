@@ -160,21 +160,25 @@ footer {
 }
 
 /* Estilo para hover en iconos de navegación */
-.iconos div {
+.iconos button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+.iconos button{
     transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.iconos div:hover {
+.iconos button:hover {
     transform: scale(1.1);
 }
 
-.iconos div:hover p {
+.iconos button:hover p {
     color: #ff7922;
 }
 
 /* Estilo para hover en imagen */
-.iconos div:hover img {
+.iconos button:hover img {
     filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
     
 }
