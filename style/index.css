@@ -61,7 +61,7 @@ header {
     transition: color 0.3s ease;
 }
 
-.headerDerecha a:hover {
+.cerrarSesion:hover a{
     color: white;
     cursor: pointer;
     border-radius: 10px;
@@ -74,6 +74,7 @@ header {
     display: flex;
     padding: 10px;
     margin-right: 5px;
+    transition: 200ms;
 }
 .carrito a{
     
@@ -81,6 +82,7 @@ header {
     padding: 5px;
     border-radius: 7px;
     box-shadow: #222 2px 2px 2px;
+    transition: 200ms;
 }
 .carrito a:hover{
     background-color:#222;
@@ -123,6 +125,7 @@ header {
     border-bottom-left-radius:10px;
     box-shadow: black 2px 2px 2px;
     border-top: black solid 1px;
+    transition: 200ms;
 }
 
 .cerrarSesion:hover{
