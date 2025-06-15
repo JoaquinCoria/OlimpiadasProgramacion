@@ -8,14 +8,14 @@ if(isset($_POST['categoria']))
         case 'Todo':
             $sql = "SELECT * FROM producto";
             break;
+        case 'Alojamiento':
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 3";
+            break;
+        case 'Vuelo':
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 2";
+            break;
         case 'Auto':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Auto'";
-            break;
-        case 'Pasaje':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Vuelos'";
-            break;
-        case 'Hospedaje':
-            $sql = "SELECT * FROM producto WHERE categoria = 'Hospedajes'";
+            $sql = "SELECT * FROM producto WHERE fkIdCategoria = 1";
             break;
         default:
             echo "No Se encontro la categoria";
@@ -24,6 +24,7 @@ if(isset($_POST['categoria']))
 }else{
     $sql = "SELECT * FROM producto";
 }
+
 $result = mysqli_query($conexion, $sql);
 ?>
 <!DOCTYPE html>
@@ -36,31 +37,47 @@ $result = mysqli_query($conexion, $sql);
 </head>
 <body>
     <header>
-        <div class="logoPrincipal">
-            <img src="./img/logo.png" alt="Logo">
+        <div class="logo_principal">
+            <a href="index.php"><img src="./img/logo.png" alt="Logo"></a>
         </div>
-        <div class="iconos">
-            <div class="alojamientos">
+        <form action="index.php" method="post" class = "iconos">
+            <button type="submit" name="categoria" value="Alojamiento" class="alojamientos">
                 <img src="./img/cama.svg" alt="Alojamientos">
                 <p>Alojamientos</p>
-            </div>
-            <div class="vuelos">
+            </button>
+            <button type="submit" name="categoria" value="Vuelo" class="vuelos">
                 <img src="./img/avion.svg" alt="Vuelos">
                 <p>Vuelos</p>
-            </div>
-            <div class="autos">
+            </button>
+            <button type="submit" name="categoria" value="Auto" class="autos">
                 <img src="./img/auto.svg" alt="Autos">
                 <p>Autos</p>
+            </button>
+        </form>
+        <div class="headerDerecha">
+            <?php if (isset($_SESSION['nombreUsuario'])){
+            echo '<div class="carrito">
+                <a href="./php/carrito.php">
+                    <img src="./img/carrito.png" alt="Carrito">
+                </a>
+            </div>';
+            }?>
+            <div>
+                <div class="usuario">
+                    <img src="./img/usuario.svg" alt="Usuario">
+                    <?php if (isset($_SESSION['nombreUsuario'])){
+                        echo "Bienvenido " . $_SESSION['nombreUsuario'];?>
+                    <?php }else{?>
+                        <a href="./php/login.php">Iniciar Sesión</a>
+                        <a href="./php/register.php">Registrarse</a>
+                    <?php } ?>
+                </div>
+                <?php if(isset($_SESSION['nombreUsuario'])){
+                echo '<div class="cerrarSesion">
+                    <a href="./php/logout.php">Cerrar Sesión</a>
+                </div>';
+                } ?>
             </div>
-        </div>
-        <div class="registrarse">
-            <img src="./img/usuario.svg" alt="Usuario">
-            <?php if (isset($_SESSION['nombreUsuario'])){ ?>
-                <a href="./php/logout.php">Cerrar Sesión</a>
-            <?php }else{?>
-                <a href="./php/login.php">Iniciar Sesión</a>
-                <a href="./php/register.php">Registrarse</a>
-            <?php } ?>
         </div>
     </header>
 
@@ -72,15 +89,17 @@ $result = mysqli_query($conexion, $sql);
                 echo "<div class='producto'>";
                 echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
                 <label for="producto'.$row['idProducto'].'" class="menu">
-                    <p class="soloquieto">' . $row['nombre'] . '</p>
+                    <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
-                    <p>' . $row['precio'] . ' </p>
+                    <p>$' . $row['precio'] . ' </p>
                 </label>';
                 echo "</div>";
             }
             if(isset($_SESSION['nombreUsuario']))
             {
-                echo '<input type="submit" name="pedir" class="pedir" value="pedir">';
+                echo '<div class="enviar">';
+                echo '<input type="submit" name="pedir" class="pedir" value="Pedir">';
+                echo '</div>';
             }
             echo "</form>";
         } else {

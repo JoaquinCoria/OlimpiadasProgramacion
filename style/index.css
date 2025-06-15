@@ -42,21 +42,95 @@ header {
     margin-bottom: 5px;
 }
 
-/* Registro/Login o Cerrar sesión */
-.registrarse {
+.headerDerecha{
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: row;
 }
 
-.registrarse img {
+.headerDerecha img{
     height: 28px;
 }
 
-.registrarse a {
+.headerDerecha a {
     text-decoration: none;
     color: #333;
     font-size: 14px;
+}
+
+.headerDerecha a {
+    transition: color 0.3s ease;
+}
+
+.cerrarSesion:hover a{
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.carrito{
+    height: 50px;
+    padding-right: 30px;
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    margin-right: 5px;
+    transition: 200ms;
+}
+.carrito a{
+    
+    background-color: #ff954e;
+    padding: 5px;
+    border-radius: 7px;
+    box-shadow: #222 2px 2px 2px;
+    transition: 200ms;
+}
+.carrito a:hover{
+    background-color:#222;
+    transition: 300ms;
+    transform: scale(1.1);
+}
+.carrito a:hover img{
+    filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
+}
+.carrito img{
+    height: 35px;
+}
+/* Registro/Login o Cerrar sesión */
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ff954e;
+    padding: 5px;
+    border-bottom-right-radius:10px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    box-shadow: black 2px 2px 2px;
+}
+.usuario img {
+    transition: transform 0.3s ease;
+}
+
+.usuario:hover img {
+    transform: scale(1.11);
+    filter: invert(99%) sepia(1%) saturate(508%) hue-rotate(194deg) brightness(119%) contrast(100%);
+    transition: transform 0.3s;
+}
+.cerrarSesion{
+    background-color: #ffc6a1;
+    padding: 2px;
+    padding-left: 5px;
+    width: 50%;
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    box-shadow: black 2px 2px 2px;
+    border-top: black solid 1px;
+    transition: 200ms;
+}
+
+.cerrarSesion:hover{
+    background-color:#444;
+    text-shadow: black 1px 1px 1px;
 }
 
 /* Contenido principal */
@@ -89,42 +163,93 @@ footer {
 }
 
 /* Estilo para hover en iconos de navegación */
-.iconos div {
+.iconos button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+}
+.iconos button{
     transition: transform 0.3s ease;
     cursor: pointer;
 }
 
-.iconos div:hover {
+.iconos button:hover {
     transform: scale(1.1);
 }
 
-.iconos div:hover p {
+.iconos button:hover p {
     color: #ff7922;
 }
 
 /* Estilo para hover en imagen */
-.iconos div:hover img {
+.iconos button:hover img {
     filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
     
 }
 
-/* Hover para enlaces de sesión */
-.registrarse a {
-    transition: color 0.3s ease;
-}
-
-.registrarse a:hover {
-    color: #ff7922;
-    cursor: pointer;
-}
 
 /* agranda imagen de usuario al pasar el mouse */
-.registrarse img {
-    transition: transform 0.3s ease;
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.formularioProductos{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+input[type="checkbox"] {
+    display: none;
+}
+.producto{
+    background-color: #ffdac2;
+    color: black;
+    border-radius: 7%/14%;
+    height: 10vh;
+    width: 10vw;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    box-sizing: border-box;
+    transition: background-color 300ms;
+}
+.producto .nombreProducto{
+    font-weight: bolder;
+}
+input[type="checkbox"] + label {
+    display: inline-block;
+    padding: 5px;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.registrarse:hover img {
-    transform: scale(1.11);
-    filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
-    transition: transform 0.3s;
+input[type="checkbox"]:checked + label {
+    background-color: #fff9f5;
+    color: rgb(36, 36, 36);
+    box-shadow: #222 2px 2px 2px;
+}
+.producto:hover{
+    background-color: rgb(36, 36, 36);
+    color: #ffdac2;
+    transition: background-color 300ms;
+}
+
+.container input[type="submit"] {
+    padding: 13px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #222;
+    color:white;
+    transition: 250ms;
+}
+.container input[type="submit"]:hover{
+    background-color: white;
+    color: #222;
+    box-shadow: #222 2px 2px 2px;
+    transition: 250ms;
 }
