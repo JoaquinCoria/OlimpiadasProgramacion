@@ -31,7 +31,7 @@ $result = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css?2">
+    <link rel="stylesheet" href="./style/index.css?1">
     <title>Olimpiada de Programación</title>
 </head>
 <body>
@@ -53,14 +53,30 @@ $result = mysqli_query($conexion, $sql);
                 <p>Autos</p>
             </div>
         </div>
-        <div class="registrarse">
-            <img src="./img/usuario.svg" alt="Usuario">
-            <?php if (isset($_SESSION['nombreUsuario'])){ ?>
-                <a href="./php/logout.php">Cerrar Sesión</a>
-            <?php }else{?>
-                <a href="./php/login.php">Iniciar Sesión</a>
-                <a href="./php/register.php">Registrarse</a>
-            <?php } ?>
+        <div class="headerDerecha">
+            <?php if (isset($_SESSION['nombreUsuario'])){
+            echo '<div class="carrito">
+                <a href="./php/carrito.php">
+                    <img src="./img/carrito.png" alt="Carrito">
+                </a>
+            </div>';
+            }?>
+            <div>
+                <div class="usuario">
+                    <img src="./img/usuario.svg" alt="Usuario">
+                    <?php if (isset($_SESSION['nombreUsuario'])){
+                        echo "Bienvenido " . $_SESSION['nombreUsuario'];?>
+                    <?php }else{?>
+                        <a href="./php/login.php">Iniciar Sesión</a>
+                        <a href="./php/register.php">Registrarse</a>
+                    <?php } ?>
+                </div>
+                <?php if(isset($_SESSION['nombreUsuario'])){
+                echo '<div class="cerrarSesion">
+                    <a href="./php/logout.php">Cerrar Sesión</a>
+                </div>';
+                } ?>
+            </div>
         </div>
     </header>
 
