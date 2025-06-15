@@ -151,6 +151,7 @@ input[type="checkbox"] {
     padding: 10px;
     display: flex;
     box-sizing: border-box;
+    transition: background-color 300ms;
 }
 .producto .nombreProducto{
     font-weight: bolder;

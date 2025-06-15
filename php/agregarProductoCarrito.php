@@ -6,7 +6,7 @@
             $query = "INSERT INTO carrito(fkIdUsuario, fkIdProducto, precioUnidad) VALUE (".$_SESSION['idUsuario'].", ".$idProducto.", (SELECT precio FROM producto WHERE idProducto = ".$idProducto."));";	
             $resultado = mysqli_query($conexion, $query);
         }
-        echo "<script>alert('Productos agregados correctamente a carrito'); window.location = '../index.php'</script>";
+        echo "<script>alert('Productos agregados correctamente a carrito'); window.location = './carrito.php'</script>";
     }else{
         echo "<script>alert('No hay productos seleccionados'); window.location = '../index.php'</script>";
     }    

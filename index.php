@@ -74,7 +74,7 @@ $result = mysqli_query($conexion, $sql);
                 <label for="producto'.$row['idProducto'].'" class="menu">
                     <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
-                    <p>' . $row['precio'] . ' </p>
+                    <p>$' . $row['precio'] . ' </p>
                 </label>';
                 echo "</div>";
             }
