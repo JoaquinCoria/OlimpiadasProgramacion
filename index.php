@@ -36,8 +36,8 @@ $result = mysqli_query($conexion, $sql);
 </head>
 <body>
     <header>
-        <div class="logoPrincipal">
-            <img src="./img/logo.png" alt="Logo">
+        <div class="logo_principal">
+            <a href="index.php"><img src="./img/logo.png" alt="Logo"></a>
         </div>
         <div class="iconos">
             <div class="alojamientos">
@@ -53,14 +53,30 @@ $result = mysqli_query($conexion, $sql);
                 <p>Autos</p>
             </div>
         </div>
-        <div class="registrarse">
-            <img src="./img/usuario.svg" alt="Usuario">
-            <?php if (isset($_SESSION['nombreUsuario'])){ ?>
-                <a href="./php/logout.php">Cerrar Sesión</a>
-            <?php }else{?>
-                <a href="./php/login.php">Iniciar Sesión</a>
-                <a href="./php/register.php">Registrarse</a>
-            <?php } ?>
+        <div class="headerDerecha">
+            <?php if (isset($_SESSION['nombreUsuario'])){
+            echo '<div class="carrito">
+                <a href="./php/carrito.php">
+                    <img src="./img/carrito.png" alt="Carrito">
+                </a>
+            </div>';
+            }?>
+            <div>
+                <div class="usuario">
+                    <img src="./img/usuario.svg" alt="Usuario">
+                    <?php if (isset($_SESSION['nombreUsuario'])){
+                        echo "Bienvenido " . $_SESSION['nombreUsuario'];?>
+                    <?php }else{?>
+                        <a href="./php/login.php">Iniciar Sesión</a>
+                        <a href="./php/register.php">Registrarse</a>
+                    <?php } ?>
+                </div>
+                <?php if(isset($_SESSION['nombreUsuario'])){
+                echo '<div class="cerrarSesion">
+                    <a href="./php/logout.php">Cerrar Sesión</a>
+                </div>';
+                } ?>
+            </div>
         </div>
     </header>
 
@@ -72,15 +88,17 @@ $result = mysqli_query($conexion, $sql);
                 echo "<div class='producto'>";
                 echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
                 <label for="producto'.$row['idProducto'].'" class="menu">
-                    <p class="soloquieto">' . $row['nombre'] . '</p>
+                    <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
-                    <p>' . $row['precio'] . ' </p>
+                    <p>$' . $row['precio'] . ' </p>
                 </label>';
                 echo "</div>";
             }
             if(isset($_SESSION['nombreUsuario']))
             {
-                echo '<input type="submit" name="pedir" class="pedir" value="pedir">';
+                echo '<div class="enviar">';
+                echo '<input type="submit" name="pedir" class="pedir" value="Pedir">';
+                echo '</div>';
             }
             echo "</form>";
         } else {
