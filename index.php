@@ -36,8 +36,8 @@ $result = mysqli_query($conexion, $sql);
 </head>
 <body>
     <header>
-        <div class="logoPrincipal">
-            <img src="./img/logo.png" alt="Logo">
+        <div class="logo_principal">
+            <a href="index.php"><img src="./img/logo.png" alt="Logo"></a>
         </div>
         <div class="iconos">
             <div class="alojamientos">
@@ -72,7 +72,7 @@ $result = mysqli_query($conexion, $sql);
                 echo "<div class='producto'>";
                 echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
                 <label for="producto'.$row['idProducto'].'" class="menu">
-                    <p class="soloquieto">' . $row['nombre'] . '</p>
+                    <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
                     <p>' . $row['precio'] . ' </p>
                 </label>';
