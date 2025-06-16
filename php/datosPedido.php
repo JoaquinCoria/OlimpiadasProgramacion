@@ -18,23 +18,25 @@
     $informacionProducto = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto = ".$_SESSION['idProducto'].";")->fetch_assoc(); 
 
 
-    // Cuando el usuario toca el boton agregar a carrito comprueba si las fechas son válidas
-    if(isset($_POST['pedir']) && strtotime($_POST['fecha'][1]) > strtotime($_POST['fecha'][0]))
+    if(isset($_POST['pedir']) )
     {
-         // Si la categoria es vuelo calcula el precio por la cantidad de vuelos
-        if($informacionProducto['fkIdCategoria'] == 2){
-            $_SESSION['cantidadCarrito'] = count($_POST['fecha']); 
-            $_SESSION['precioTotal'] = $_SESSION['cantidadCarrito'] * $informacionProducto['precio'];
-        // Si la categoria es otra calcula el precio por cantidad de días
+        // Cuando el usuario toca el boton agregar a carrito comprueba si las fechas son válidas
+        if(strtotime($_POST['fecha'][1]) > strtotime($_POST['fecha'][0])){
+            // Si la categoria es vuelo calcula el precio por la cantidad de vuelos
+            if($informacionProducto['fkIdCategoria'] == 2){
+                $_SESSION['cantidadCarrito'] = count($_POST['fecha']); 
+                $_SESSION['precioTotal'] = $_SESSION['cantidadCarrito'] * $informacionProducto['precio'];
+            // Si la categoria es otra calcula el precio por cantidad de días
+            }else{
+                // saca los segundos de diferencia entre las dos fechas y lo divide por la cantidad de segunos en el día
+                $diasTotales = (strtotime($_POST['fecha'][1]) - strtotime($_POST['fecha'][0])) / 86400;
+                $_SESSION['cantidadCarrito'] = $diasTotales;
+                $_SESSION['precioTotal'] = $diasTotales * $informacionProducto['precio'];
+            }
+            header("location: ./agregarProductoCarrito.php");
         }else{
-            // saca los segundos de diferencia entre las dos fechas y lo divide por la cantidad de segunos en el día
-            $diasTotales = (strtotime($_POST['fecha'][1]) - strtotime($_POST['fecha'][0])) / 86400;
-             $_SESSION['cantidadCarrito'] = $diasTotales;
-            $_SESSION['precioTotal'] = $diasTotales * $informacionProducto['precio'];
+            echo "<div class='msjError'> Fechas inválidas, intente nuevamente </div>";
         }
-        header("location: ./agregarProductoCarrito.php");
-    }else{
-        echo "<div class='msjError'> Fechas inválidas, intente nuevamente </div>";
     }
 ?> 
 <!DOCTYPE html>
