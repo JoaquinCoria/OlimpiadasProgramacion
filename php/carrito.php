@@ -31,7 +31,7 @@ $precioTotal = 0;
     <!-- Lista de productos en el carrito -->
     <div>
         <?php
-        if (mysqli_num_rows($resultadoProductos) > 0){
+        if (isset($_SESSION['idProducto'])){
             echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
             foreach($infoProductos as $i=>$val)
             {
