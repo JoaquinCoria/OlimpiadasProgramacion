@@ -31,7 +31,7 @@ $precioTotal = 0;
     <!-- Lista de productos en el carrito -->
     <div>
         <?php
-        if (isset($_SESSION['idProducto'])){
+        if (count($infoCarrito) > 0){
             echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
             foreach($infoProductos as $i=>$val)
             {
