@@ -1,14 +1,12 @@
 <?php
 include('conexion.php');
 session_start();
-
 if (!isset($_SESSION['nombreUsuario'])) {
     header('location:../index.php');
     exit();
 }
 // Obtiene los ids de los productos del carrito del usuario
-$resultadoProductos =  mysqli_query($conexion, "SELECT fkIdProducto FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
-
+$resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
 // Obtiene la información de los productos que tiene en el carrito el usuario
 $idProductos = [];
 while ($row = $resultadoProductos->fetch_assoc()) {

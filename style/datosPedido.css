@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container{
+    background-color: green;
+    width: 40%;
+    margin-top: 8vh;
+}
+.tarjetaProducto{
+    padding: 10px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    text-align: center;
+    width: 30%;
+}
+.frmFechas{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+}
+.frmFechas label{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+.frmFechas input{
+    width: 30%;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
