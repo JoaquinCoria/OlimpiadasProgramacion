@@ -7,10 +7,12 @@ if (!isset($_SESSION['nombreUsuario'])) {
 }
 // Obtiene los ids de los productos del carrito del usuario
 $resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
-// Obtiene la información de los productos que tiene en el carrito el usuario
-
+// Obtiene la información de los productos que tiene en el carrito el 
 $idProductos = [];
 $resultadoCarrito = $resultadoProductos->fetch_assoc();
+$infoCarrito[] = $resultadoCarrito;
+$resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($resultadoCarrito['fkIdProducto']).";");
+$infoProductos[] = $resultadoInfoProductos->fetch_assoc();
 while ($row = $resultadoProductos->fetch_assoc()) {
     $idProductos[] = $row;
     $resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($row['fkIdProducto']).";");
@@ -31,7 +33,7 @@ $precioTotal = 0;
     <!-- Lista de productos en el carrito -->
     <div>
         <?php
-        if (count($infoCarrito) > 0){
+        if(count($infoProductos) > 0){
             echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
             foreach($infoProductos as $i=>$val)
             {
