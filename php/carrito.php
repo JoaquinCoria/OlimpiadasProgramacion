@@ -58,6 +58,11 @@ $precioTotal = 0;
             echo "<p>Subtotal carrito: $".$precioTotal."</p>";
             echo '<input type="submit" name="eliminar" class="eliminar" value="Eliminar">';
             echo "</form>";
+            ?>
+            <form action="realizarPedido.php" method="post">
+                <input type="submit" name="pedido" value="Realizar pedido">
+            </form>
+            <?php
         }else{
             echo "No hay productos en el carrito";
         }
