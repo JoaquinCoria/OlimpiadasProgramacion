@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2025 a las 01:46:37
+-- Tiempo de generación: 17-06-2025 a las 23:30:39
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -90,7 +90,7 @@ CREATE TABLE `pedidoshistoricos` (
 
 CREATE TABLE `producto` (
   `idProducto` int(7) NOT NULL,
-  `descripcion` varchar(20) DEFAULT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
   `precio` float DEFAULT NULL,
   `nombre` varchar(20) DEFAULT NULL,
   `fkIdCategoria` int(7) DEFAULT NULL
@@ -101,32 +101,31 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`idProducto`, `descripcion`, `precio`, `nombre`, `fkIdCategoria`) VALUES
-(1, 'Auto de gama media', 25000, 'Ford ka', 1),
-(2, 'Vuelo clase economic', 1500000, 'Miami', 2),
-(3, 'Hotel tres estrellas', 249999, 'Hotel El Momito', 3),
-(4, 'Subaru impresa model', 50000, 'Subaru', 1),
-(5, 'Pasaje clase media a', 500000, 'Buenos Aires', 2),
-(6, 'Hotel en Roma, Itali', 120000, 'Hotel Splinter', 3),
-(7, 'Toyata Hilux modelo ', 25000, 'Toyota', 1),
-(8, 'Ford Ranger modelo 2', 30000, 'Ford', 1),
-(9, 'Ford Focus modelo 20', 15000, 'Ford', 1),
-(10, 'Jeep Cherokee modelo', 60000, 'Jeep', 1),
-(11, 'Jeep Gladiator model', 70000, 'Jeep', 1),
-(12, 'Toyota Corolla model', 35000, 'Toyota', 1),
-(13, 'Jaguar F Pace modelo', 80000, 'Jaguar', 1),
-(14, 'Hummer EV modelo 202', 90000, 'Hummer', 1),
-(15, 'RAM Rampage modelo 2', 45000, 'RAM', 1),
-(16, 'RAM 2500 modelo 2023', 25000, 'RAM', 1),
-(17, 'Hotel en Londres, Re', 200000, 'Hotel Sigmaboy', 3),
-(18, 'Hotel Berlín, Aleman', 120000, 'Hotel Platense', 3),
-(19, 'Volkswagen Polo Clas', 30000, 'Volkswagen', 1),
-(20, 'Volkswagen Taos mode', 450000, 'Volkswagen', 1),
-(21, 'Hotel París, Francia', 100000, 'Hotel Sorieketon', 3),
-(22, 'Hotel en Ciudad De M', 90000, 'Hotel Frabigol', 3),
-(23, 'Hotel en Santiago De', 130000, 'Hotel Ming', 3),
-(24, 'Hotel en Santo Domin', 110000, 'Hotel Bordieri', 3),
-(25, 'Hotel en Viena, Aust', 150000, 'Hotel Toto', 3),
-(26, 'Hotel en Madrid, Esp', 150000, 'Hotel Wigetta', 3),
+(1, 'Ford Ka modelo 2008.', 25000, 'Ford ka', 1),
+(3, 'Hotel en Miami, Estados Unidos tres estrellas.', 249999, 'Hotel El Momito', 3),
+(4, 'Subaru impresa modelo 2011.', 50000, 'Subaru', 1),
+(5, 'Pasaje clase media a Buenos Aires.', 500000, 'Buenos Aires', 2),
+(6, 'Hotel en Roma, Italia  cuatro estrellas.', 120000, 'Hotel Splinter', 3),
+(7, 'Toyota Hilux modelo 2001.', 25000, 'Toyota', 1),
+(8, 'Ford Ranger modelo 1998.', 30000, 'Ford', 1),
+(9, 'Ford Focus modelo 2013.', 15000, 'Ford', 1),
+(10, 'Jeep Cherokee modelo 2019.', 60000, 'Jeep', 1),
+(11, 'Jeep Gladiator modelo 2015.', 70000, 'Jeep', 1),
+(12, 'Toyota Corolla modelo 2022.', 35000, 'Toyota', 1),
+(13, 'Jaguar F Pace modelo 2019.', 80000, 'Jaguar', 1),
+(14, 'Hummer EV modelo 2023.', 90000, 'Hummer', 1),
+(15, 'RAM Rampage modelo 2016.', 45000, 'RAM', 1),
+(16, 'RAM 2500 modelo 2023.', 25000, 'RAM', 1),
+(17, 'Hotel en Londres, Reino Unido Cinco estrellas.', 200000, 'Hotel Sigmaboy', 3),
+(18, 'Hotel Berlín, Alemania cuatro estrellas.', 120000, 'Hotel Platense', 3),
+(19, 'Volkswagen Polo Classic modelo 2006.', 30000, 'Volkswagen', 1),
+(20, 'Volkswagen Taos modelo 2024.', 450000, 'Volkswagen', 1),
+(21, 'Hotel París, Francia tres estrellas.', 100000, 'Hotel Sorieketon', 3),
+(22, 'Hotel en Ciudad De México, México tres estrellas.', 90000, 'Hotel Frabigol', 3),
+(23, 'Hotel en Santiago De Chile, Chile cuatro estrellas.', 130000, 'Hotel Ming', 3),
+(24, 'Hotel en Santo Domingo, Republica Dominicana cinco estrellas.', 110000, 'Hotel Bordieri', 3),
+(25, 'Hotel en Viena, Austria cinco estrellas.', 150000, 'Hotel Toto', 3),
+(26, 'Hotel en Madrid, España cinco estrellas.', 150000, 'Hotel Wigetta', 3),
 (27, 'Hotel en Atenas, Gre', 100000, 'Hotel Kratos', 3),
 (28, 'Hotel en Copenhague,', 800000, 'Hotel Zuko', 3),
 (29, 'Hotel en Brasilia, B', 1500000, 'Hotel Atomix', 3),
