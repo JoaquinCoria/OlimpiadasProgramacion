@@ -180,14 +180,11 @@ footer {
     color: #ff7922;
 }
 
-/* Estilo para hover en imagen */
 .iconos button:hover img {
     filter: invert(57%) sepia(56%) saturate(3587%) hue-rotate(345deg) brightness(107%) contrast(101%);
     
 }
 
-
-/* agranda imagen de usuario al pasar el mouse */
 
 .container{
     display: flex;
@@ -198,9 +195,6 @@ footer {
     flex-direction: row;
     height: 100%;
     width: 100%;
-}
-input[type="checkbox"] {
-    display: none;
 }
 .producto{
     background-color: #ffdac2;
@@ -213,23 +207,16 @@ input[type="checkbox"] {
     display: flex;
     box-sizing: border-box;
     transition: background-color 300ms;
+    text-align: center;
+    justify-content: center;
 }
 .producto .nombreProducto{
-    font-weight: bolder;
+    font-weight:bolder;
+    font-size: 1.05rem;
+    margin-bottom: 3px;
 }
-input[type="checkbox"] + label {
-    display: inline-block;
-    padding: 5px;
-    width: 100%;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-input[type="checkbox"]:checked + label {
-    background-color: #fff9f5;
-    color: rgb(36, 36, 36);
-    box-shadow: #222 2px 2px 2px;
+.producto p{
+    margin: 2px;
 }
 .producto:hover{
     background-color: rgb(36, 36, 36);
