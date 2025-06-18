@@ -12,10 +12,6 @@
     // Guarda momentaneamente el valor de $_POST['producto'] en $_SESSION
     if(isset($_POST['producto']))
     {
-<<<<<<< Updated upstream
-        // Elimina el $_SESSION['idProducto'] si había un idProducto antes 
-=======
->>>>>>> Stashed changes
         unset($_SESSION['idProducto']);
         $_SESSION['idProducto'] = $_POST['producto'];
     }
@@ -109,7 +105,9 @@
             }
             ?>
             <div class="btnPedir">
-                <a href="../index.php">Volver</a>
+                <button type="submit"  name="pedir" value="pedir">
+                     Volver
+                </button>
                 <button type="submit"  name="pedir" value="pedir">
                     Agregar al carrito
                 </button>
