@@ -105,9 +105,13 @@ $result = mysqli_query($conexion, $sql);
         <div class="logo_footer">
             <img src="./img/logo.png" alt="Logo">
         </div>
+        <div class="email">
+            <p>Correo Electrónico</p>
+            <p>sigma@gmail.com</p>
+        </div>
         <div class="atencion_al_cliente">
             <p>Atención al cliente</p>
-            <p>+54 9 2262 34-9131</p>
+            <p>+54 9 2262 34-9131</p> 
         </div>
     </footer>
 </body>
