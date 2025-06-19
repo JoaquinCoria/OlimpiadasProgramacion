@@ -101,9 +101,8 @@ $result = mysqli_query($conexion, $sql);
                 echo '<form action="./php/agregarProductoCatalogo method="post" class="formularioProductos">';
             }
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='producto'>";
-                echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
-                <label for="producto'.$row['idProducto'].'" class="menu">
+                echo "<button type='submit' name='producto' value='".$row['idProducto']."' class='producto'>";
+                echo '<label for="producto'.$row['idProducto'].'" class="menu"> 
                     <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
                     <p>$' . $row['precio'] . ' </p>
