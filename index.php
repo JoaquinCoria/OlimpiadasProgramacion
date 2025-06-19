@@ -63,15 +63,14 @@ $result = mysqli_query($conexion, $sql);
                         </a>
                     </div>';
 
-                }else{
+                }elseif($_SESSION['admin'] == TRUE)
+                {
                     echo '<div class="carrito">
                        <a href="./php/agregarProductoCatalogo.php">
                            Agregar producto
                        </a>
                    </div>';   
                 }
-            }elseif($_SESSION['admin'] == TRUE)
-            {
             }
             ?>
             <div>
@@ -96,7 +95,11 @@ $result = mysqli_query($conexion, $sql);
     <div class="container">
         <?php
         if (mysqli_num_rows($result) > 0){
-            echo '<form action="./php/agregarProductoCarrito.php" method="post" class="formularioProductos">';
+            if($_SESSION['admin'] == TRUE){
+                echo '<form action="./php/modificarProductoCatalogo method="post" class="formularioProductos">';
+            }else{
+                echo '<form action="./php/agregarProductoCatalogo method="post" class="formularioProductos">';
+            }
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='producto'>";
                 echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
@@ -106,12 +109,6 @@ $result = mysqli_query($conexion, $sql);
                     <p>$' . $row['precio'] . ' </p>
                 </label>';
                 echo "</div>";
-            }
-            if(isset($_SESSION['nombreUsuario']))
-            {
-                echo '<div class="enviar">';
-                echo '<input type="submit" name="pedir" class="pedir" value="Pedir">';
-                echo '</div>';
             }
             echo "</form>";
         } else {
