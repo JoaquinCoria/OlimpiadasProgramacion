@@ -65,7 +65,7 @@ $result = mysqli_query($conexion, $sql);
 
                 }else{
                     echo '<div class="carrito">
-                       <a href="./php/carrito.php">
+                       <a href="./php/agregarProductoCatalogo.php">
                            Agregar producto
                        </a>
                    </div>';   
