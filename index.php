@@ -96,9 +96,9 @@ $result = mysqli_query($conexion, $sql);
         <?php
         if (mysqli_num_rows($result) > 0){
             if($_SESSION['admin'] == TRUE){
-                echo '<form action="./php/modificarProductoCatalogo method="post" class="formularioProductos">';
+                echo '<form action="./php/modificarProductoCatalogo.php" method="post" class="formularioProductos">';
             }else{
-                echo '<form action="./php/agregarProductoCatalogo method="post" class="formularioProductos">';
+                echo '<form action="./php/agregarProductoCatalogo.php method="post" class="formularioProductos">';
             }
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<button type='submit' name='producto' value='".$row['idProducto']."' class='producto'>";
@@ -107,7 +107,7 @@ $result = mysqli_query($conexion, $sql);
                     <p>' . $row['descripcion'] . '</p>
                     <p>$' . $row['precio'] . ' </p>
                 </label>';
-                echo "</div>";
+                echo "</button>";
             }
             echo "</form>";
         } else {
