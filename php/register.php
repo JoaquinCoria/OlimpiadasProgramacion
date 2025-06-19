@@ -21,8 +21,8 @@
             if(validarPassword($password))
             {
                 //insertar usuarios
-                $sql_insert = "INSERT INTO usuario(nombre,email,contrasenia) 
-                VALUES ('$usuario','$email','$password')";
+                $sql_insert = "INSERT INTO usuario(nombre,email,contrasenia,admin) 
+                VALUES ('$usuario','$email','$password', FALSE)";
                 $query= mysqli_query($conexion,$sql_insert);
                 if($query){
                     echo "<script>alert('Usuario registrado'); window.location = 'login.php'</script>";

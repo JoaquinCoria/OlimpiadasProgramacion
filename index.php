@@ -56,12 +56,24 @@ $result = mysqli_query($conexion, $sql);
         </form>
         <div class="headerDerecha">
             <?php if (isset($_SESSION['nombreUsuario'])){
-            echo '<div class="carrito">
-                <a href="./php/carrito.php">
-                    <img src="./img/carrito.png" alt="Carrito">
-                </a>
-            </div>';
-            }?>
+                if($_SESSION['admin'] == FALSE){
+                    echo '<div class="carrito">
+                        <a href="./php/carrito.php">
+                            <img src="./img/carrito.png" alt="Carrito">
+                        </a>
+                    </div>';
+
+                }else{
+                    echo '<div class="carrito">
+                       <a href="./php/carrito.php">
+                           Agregar producto
+                       </a>
+                   </div>';   
+                }
+            }elseif($_SESSION['admin'] == TRUE)
+            {
+            }
+            ?>
             <div>
                 <div class="usuario">
                     <img src="./img/usuario.svg" alt="Usuario">

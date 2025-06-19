@@ -16,8 +16,11 @@ if(isset($_POST['btnEnviar'])){
     $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND clave = '".$clave."'");
     $nr = mysqli_num_rows($query);
     if($nr == 1){
+        $infoUsuario = $query->fetch_assoc();
         $_SESSION['nombreUsuario'] = $nombreUsuario;
-        header("location: ../index.php");
+        $_SESSION['idUsuario'] = $infoUsuario['idUsuario'];
+        $_SESSION['admin'] = $infoUsuario ['admin'];
+        //header("location: ../index.php");
         die();
     } else if ($nr == 0){
         echo "<script>alert('Usuario no registrado'); window.location = 'login.php'</script>";
