@@ -1,0 +1,105 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f5893d;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.contenedor {
+    background-color: #fff5eb;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.contenedor h1 {
+    font-size: 26px;
+    color: #ff6600;
+    margin-bottom: 20px;
+}
+
+.contenedor img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.Formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelInput label {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input,
+.relleno {
+    padding: 10px;
+    border: 2px solid #ffaf7a;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.input:focus,
+.relleno:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+.btnEnviar {
+    padding: 12px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEnviar:hover {
+    background-color: #e45500;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #e45500;
+}

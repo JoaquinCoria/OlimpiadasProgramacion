@@ -41,11 +41,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/register.css">
     <title>Registrarse</title>
 </head>
 <body>
     <header>
     <div class="contenedor">
+        <a href="../index.php">
+            <img src="../img/logo.png" >
+        </a>
         <h1>Registrarse</h1>
         <form action="register.php" method="post" class="Formulario">
             <div class="labelInput">

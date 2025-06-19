@@ -1,0 +1,113 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f5893d; /* naranja cálido de fondo */
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    margin: 0.005vw ;
+
+}
+
+.imagen img {
+    width: 150px; 
+
+}
+
+.contenedor {
+    background-color: #fff5eb;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    max-width: 90%;
+}
+
+.titulo {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ff6600;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.labelInput label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.relleno {
+    padding: 10px;
+    border: 2px solid #ffaf7a;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.relleno:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+.btnEnviar {
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btnEnviar:hover {
+    background-color: #e45500;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.footer a {
+    font-size: 14px;
+    font-weight: bolder;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    margin-right: 50px;
+    margin-left: 14px;
+}
+
+.footer a:hover {
+    color: #e45500;
+}
