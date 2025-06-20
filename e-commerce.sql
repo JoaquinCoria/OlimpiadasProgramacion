@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2025 a las 23:30:39
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 21-06-2025 a las 01:27:13
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,8 +32,16 @@ CREATE TABLE `carrito` (
   `fkIdUsuario` int(7) DEFAULT NULL,
   `fkIdProducto` int(7) DEFAULT NULL,
   `precioTotal` float DEFAULT NULL,
-  `precioUnidad` float DEFAULT NULL
+  `precioUnidad` float DEFAULT NULL,
+  `cantidad` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `carrito`
+--
+
+INSERT INTO `carrito` (`idCarrito`, `fkIdUsuario`, `fkIdProducto`, `precioTotal`, `precioUnidad`, `cantidad`) VALUES
+(1, 0, 5, 1000000, 500000, 2);
 
 -- --------------------------------------------------------
 
@@ -157,8 +165,17 @@ CREATE TABLE `usuario` (
   `nombre` varchar(20) DEFAULT NULL,
   `apellido` varchar(20) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
-  `contrasenia` varchar(18) DEFAULT NULL
+  `contrasenia` varchar(18) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`, `admin`) VALUES
+(1, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123', 0),
+(2, 'admin', NULL, 'admin@admin', 'Admin123', 1);
 
 --
 -- Índices para tablas volcadas
@@ -215,13 +232,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
