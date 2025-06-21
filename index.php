@@ -32,7 +32,7 @@ $result = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css?1">
+    <link rel="stylesheet" href="./style/index.css?2">
     <title>Olimpiada de Programación</title>
 </head>
 <body>
@@ -84,22 +84,15 @@ $result = mysqli_query($conexion, $sql);
     <div class="container">
         <?php
         if (mysqli_num_rows($result) > 0){
-            echo '<form action="./php/agregarProductoCarrito.php" method="post" class="formularioProductos">';
+            echo '<form action="./php/datosPedido.php" method="post" class="formularioProductos">';
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='producto'>";
-                echo '<input type="checkbox" id="producto'.$row['idProducto'].'" name="producto[]" value="'.$row['idProducto'].'">
-                <label for="producto'.$row['idProducto'].'" class="menu">
+                echo "<button type='submit' name='producto' value='".$row['idProducto']."' class='producto'>";
+                echo '<label for="producto'.$row['idProducto'].'" class="menu"> 
                     <p class="nombreProducto">' . $row['nombre'] . '</p>
                     <p>' . $row['descripcion'] . '</p>
                     <p>$' . $row['precio'] . ' </p>
                 </label>';
-                echo "</div>";
-            }
-            if(isset($_SESSION['nombreUsuario']))
-            {
-                echo '<div class="enviar">';
-                echo '<input type="submit" name="pedir" class="pedir" value="Pedir">';
-                echo '</div>';
+                echo "</button>";
             }
             echo "</form>";
         } else {
@@ -112,9 +105,13 @@ $result = mysqli_query($conexion, $sql);
         <div class="logo_footer">
             <img src="./img/logo.png" alt="Logo">
         </div>
+        <div class="email">
+            <p>Correo Electrónico</p>
+            <p>sigma@gmail.com</p>
+        </div>
         <div class="atencion_al_cliente">
             <p>Atención al cliente</p>
-            <p>+54 9 2262 34-9131</p>
+            <p>+54 9 2262 34-9131</p> 
         </div>
     </footer>
 </body>

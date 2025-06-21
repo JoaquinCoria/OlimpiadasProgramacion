@@ -153,9 +153,18 @@ footer {
     height: 80px;
 }
 
+.email {
+    text-align: center;
+    font-size: 15px;
+}
+
+.email p:last-child {
+    font-weight: bold;
+}
+
 .atencion_al_cliente {
     text-align: right;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .atencion_al_cliente p:last-child {
@@ -190,14 +199,16 @@ footer {
 /* agranda imagen de usuario al pasar el mouse */
 
 .container{
+    height: auto;
     display: flex;
     flex-direction: column;
 }
 .formularioProductos{
     display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
 }
 input[type="checkbox"] {
     display: none;
@@ -206,13 +217,15 @@ input[type="checkbox"] {
     background-color: #ffdac2;
     color: black;
     border-radius: 7%/14%;
-    height: 10vh;
+    min-height: 10vh;
+    height: auto;
     width: 10vw;
     margin: 10px;
     padding: 10px;
     display: flex;
     box-sizing: border-box;
     transition: background-color 300ms;
+    justify-content: center;
 }
 .producto .nombreProducto{
     font-weight: bolder;
