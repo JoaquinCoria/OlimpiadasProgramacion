@@ -12,7 +12,6 @@
     // Guarda momentaneamente el valor de $_POST['producto'] en $_SESSION
     if(isset($_POST['producto']))
     {
-        // Elimina el $_SESSION['idProducto'] si había un idProducto antes 
         unset($_SESSION['idProducto']);
         $_SESSION['idProducto'] = $_POST['producto'];
     }
@@ -46,7 +45,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/datosPedido.css">
+    <link rel="stylesheet" href="../style/datosPedido.css?3">
     <title>Datos del pedido</title>
 </head>
 <body>
@@ -105,9 +104,15 @@
                 }
             }
             ?>
-            <button type="submit" class="btnPedir" name="pedir" value="pedir">
-                Agregar al carrito
-            </button>
+            <div class="btnPedir">
+                <button type="submit"  name="pedir" value="pedir">
+                     Volver
+                </button>
+                <button type="submit"  name="pedir" value="pedir">
+                    Agregar al carrito
+                </button>
+                
+            </div>
         </form>   
     </div>
 </body>
