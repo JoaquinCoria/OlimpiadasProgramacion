@@ -83,24 +83,24 @@
             if(!isset($_POST['cantidad']) || $_POST['cantidad'] == 'idaYvuelta')
             {
                 echo '<label for="fecha">Fecha de ingreso</label>
-                <input type="date" name="fecha[0]" id="" min="20'.date('y-m-d').'" required>
+                <input type="date" name="fecha[0]" id="" min="'.date('Y-m-d').'" required>
                 <label for="fecha">Fecha de egreso</label>
-                <input type="date" name="fecha[1]" id="" min="20'.date('y-m-d').'" required>';
+                <input type="date" name="fecha[1]" id="" min="'.date('Y-m-d').'" required>';
             }else{
                 switch($_POST['cantidad']){
                     case 'ida':
                         echo '<label for="fecha">Fecha de ingreso</label>
-                        <input type="date" name="fecha[0]" min="20'.date('y-m-d').'" required>';
+                        <input type="date" name="fecha[0]" min="'.date('Y-m-d').'" required>';
                         break;
                     case 'vuelta':
                         echo '<label for="fecha">Fecha de egreso</label>
-                        <input type="date" name="fecha[0]" min="20'.date('y-m-d').'" required>';
+                        <input type="date" name="fecha[0]" min="'.date('Y-m-d').'" required>';
                         break;
                     default:
                         echo '<label for="fecha">Fecha de ingreso</label>
-                        <input type="date" name="fecha[0]" id="" min="20'.date('y-m-d').'" required>
+                        <input type="date" name="fecha[0]" id="" min="'.date('Y-m-d').'" required>
                         <label for="fecha">Fecha de egreso</label>
-                        <input type="date" name="fecha[1]" id="" min="20'.date('y-m-d').'" required>';
+                        <input type="date" name="fecha[1]" id="" min="'.date('Y-m-d').'" required>';
                         break;
                 }
             }
