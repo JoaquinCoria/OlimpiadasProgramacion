@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Georgia', serif;
+    background-color: #f5893d;
+    color: #000;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.container {
+    background-color: #fff5eb;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 100%;
+    margin: auto; 
+}
+
+.tarjetaProducto {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tarjetaProducto h1 {
+    font-size: 26px;
+    color: #ff6600;
+    margin-bottom: 10px;
+}
+
+.tarjetaProducto p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
+    padding: 10px;
+    border: 2px solid #ffaf7a;
+    border-radius: 10px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+form button,
+form input[type="submit"] {
+    padding: 12px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover,
+form input[type="submit"]:hover {
+    background-color: #e45500;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e45500;
+}
