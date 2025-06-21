@@ -6,8 +6,8 @@ if (!isset($_SESSION['nombreUsuario'])) {
     exit();
 }
 
-// Obtiene los ids de los productos del carrito del usuario
-$resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
+// Obtiene los ids de los productos del carrito actual del usuario
+$resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && idCarrito IS NULL;");
 // Obtiene la información de los productos que tiene en el carrito el 
 $resultadoCarrito = $resultadoProductos->fetch_assoc();
 if($resultadoCarrito!=NULL){
@@ -61,6 +61,7 @@ if($resultadoCarrito!=NULL){
             echo "<p>Subtotal carrito: $".$precioTotal."</p>";
             echo '<input type="submit" name="eliminar" class="eliminar" value="Eliminar">';
             echo "</form>";
+            $_SESSION['precioCarrito'] = $precioTotal;
             ?>
             <form action="realizarPedido.php" method="post">
                 <input type="submit" name="pedido" value="Realizar pedido">
