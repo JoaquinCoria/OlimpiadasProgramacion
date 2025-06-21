@@ -99,7 +99,7 @@ $result = mysqli_query($conexion, $sql);
                 if($_SESSION['admin'] == TRUE){
                     echo '<form action="./php/productoAdmin.php" method="post" class="formularioProductos">';
                 }else{
-                    echo '<form action="./php/agregarProductoCatalogo.php" method="post" class="formularioProductos">';
+                    echo '<form action="./php/datosPedido.php" method="post" class="formularioProductos">';
                 }
             }else{
                 echo '<form action="./php/login.php" method="post" class="formularioProductos">';
