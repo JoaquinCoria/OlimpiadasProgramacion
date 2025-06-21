@@ -5,6 +5,10 @@ if (!isset($_SESSION['nombreUsuario'])) {
     header('location:../index.php');
     exit();
 }
+if($_SESSION['admin'] == TRUE){
+    header('location:../index.php');
+    exit();
+}
 
 // Obtiene los ids de los productos del carrito actual del usuario
 $resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && fkIdCompra IS NULL;");
@@ -65,7 +69,7 @@ if($resultadoCarrito!=NULL){
             $_SESSION['productosCarrito'] = $infoProductos;
             $_SESSION['informacionCarrito'] = $infoCarrito;
             ?>
-            <form action="realizarPedido.php" method="post">
+            <form action="insertarCompra.php" method="post">
                 <input type="submit" name="pedido" value="Realizar pedido">
             </form>
             <?php
