@@ -62,15 +62,20 @@ if($resultadoCarrito!=NULL){
             echo '<input type="submit" name="eliminar" class="eliminar" value="Eliminar">';
             echo "</form>";
             $_SESSION['precioCarrito'] = $precioTotal;
+            $_SESSION['productosCarrito'] = $infoProductos;
+            $_SESSION['informacionCarrito'] = $infoCarrito;
             ?>
             <form action="realizarPedido.php" method="post">
                 <input type="submit" name="pedido" value="Realizar pedido">
             </form>
             <?php
+            
         }else{
             echo "No hay productos en el carrito";
         }
+        
     ?>
+    <a href="../index.php">Volver</a>
     </div>
 </body>
 </html>
