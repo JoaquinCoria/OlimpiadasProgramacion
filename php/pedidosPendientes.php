@@ -12,9 +12,7 @@
         while($row2 = $resultadoInfoCarrito->fetch_assoc()){
             $infoCarrito[$row['idCompra']][] = $row2;
         }
-    }
-
-    
+    }   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,6 +58,9 @@
             echo '<p> Precio total del pedido: $'.$value['precioTotal'].'</p>';
             echo '<form action="eliminarPedidoPendiente.php" method="post">
                 <button type = "submit" name = "eliminar" value = "'.$value['idCompra'].'">Eliminar pedido</button>
+            </form>';
+            echo '<form action="pedidosPendientes.php" method="post">
+                <button type = "submit" name = "modificar" value = "'.$value['idCompra'].'">Modificar pedido</button>
             </form>';
         echo "</div>";
     }
