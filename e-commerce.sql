@@ -39,13 +39,6 @@ CREATE TABLE `carrito` (
   `fechaFinal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Volcado de datos para la tabla `carrito`
---
-
-(38, 1, 3, 1749990, 249999, 7, NULL, '2025-06-21', '2025-06-28'),
-(40, 1, 41, 500000, 500000, 1, NULL, '2025-06-27', NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -235,8 +228,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `carrito`
   MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
