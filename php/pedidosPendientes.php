@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <!-- Temporal para entender algo -->
+    <!-- Temporal para entender algo (eliminar) -->
     <style>
         .compra{
             border: solid orange 3px;
