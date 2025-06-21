@@ -16,7 +16,10 @@ if(isset($_POST['btnEnviar'])){
     $query = mysqli_query($conexion, "SELECT * FROM usuario WHERE nombre = '".$nombreUsuario."' AND contrasenia = '".$clave."'");
     $nr = mysqli_num_rows($query);
     if($nr == 1){
+        $infoUsuario = $query->fetch_assoc();
         $_SESSION['nombreUsuario'] = $nombreUsuario;
+        $_SESSION['idUsuario'] = $infoUsuario['idUsuario'];
+        $_SESSION['admin'] = $infoUsuario ['admin'];
         header("location: ../index.php");
         die();
     } else if ($nr == 0){

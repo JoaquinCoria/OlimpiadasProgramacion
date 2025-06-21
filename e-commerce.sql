@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2025 a las 05:26:12
+-- Tiempo de generación: 21-06-2025 a las 01:27:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -166,15 +166,18 @@ CREATE TABLE `usuario` (
   `nombre` varchar(20) DEFAULT NULL,
   `apellido` varchar(20) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
-  `contrasenia` varchar(18) DEFAULT NULL
+  `contrasenia` varchar(18) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`) VALUES
-(0, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123');
+INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`, `admin`) VALUES
+(1, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123', 0),
+(2, 'admin', NULL, 'admin@admin', 'Admin123', 1);
+
 
 --
 -- Índices para tablas volcadas
@@ -238,6 +241,18 @@ ALTER TABLE `carrito`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

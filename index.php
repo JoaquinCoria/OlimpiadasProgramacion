@@ -56,12 +56,23 @@ $result = mysqli_query($conexion, $sql);
         </form>
         <div class="headerDerecha">
             <?php if (isset($_SESSION['nombreUsuario'])){
-            echo '<div class="carrito">
-                <a href="./php/carrito.php">
-                    <img src="./img/carrito.png" alt="Carrito">
-                </a>
-            </div>';
-            }?>
+                if($_SESSION['admin'] == FALSE){
+                    echo '<div class="carrito">
+                        <a href="./php/carrito.php">
+                            <img src="./img/carrito.png" alt="Carrito">
+                        </a>
+                    </div>';
+
+                }elseif($_SESSION['admin'] == TRUE)
+                {
+                    echo '<div class="carrito">
+                       <a href="./php/agregarProductoCatalogo.php">
+                           Agregar producto
+                       </a>
+                   </div>';   
+                }
+            }
+            ?>
             <div>
                 <div class="usuario">
                     <img src="./img/usuario.svg" alt="Usuario">
@@ -84,7 +95,15 @@ $result = mysqli_query($conexion, $sql);
     <div class="container">
         <?php
         if (mysqli_num_rows($result) > 0){
-            echo '<form action="./php/datosPedido.php" method="post" class="formularioProductos">';
+            if(isset($_SESSION['admin'])){
+                if($_SESSION['admin'] == TRUE){
+                    echo '<form action="./php/productoAdmin.php" method="post" class="formularioProductos">';
+                }else{
+                    echo '<form action="./php/datosPedido.php" method="post" class="formularioProductos">';
+                }
+            }else{
+                echo '<form action="./php/login.php" method="post" class="formularioProductos">';
+            }
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<button type='submit' name='producto' value='".$row['idProducto']."' class='producto'>";
                 echo '<label for="producto'.$row['idProducto'].'" class="menu"> 

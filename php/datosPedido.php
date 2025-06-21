@@ -12,6 +12,7 @@
     // Guarda momentaneamente el valor de $_POST['producto'] en $_SESSION
     if(isset($_POST['producto']))
     {
+        // Elimina el $_SESSION['idProducto'] si había un idProducto antes 
         unset($_SESSION['idProducto']);
         $_SESSION['idProducto'] = $_POST['producto'];
     }
