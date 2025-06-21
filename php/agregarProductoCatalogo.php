@@ -42,9 +42,9 @@ if (isset($_POST['agregar'])) {
 <body>
     <form action="./agregarProductoCatalogo.php" method="post">
         <label for="nombre">Nombre</label><br>
-        <input type="text" name="nombre" placeholder ="nombre"><br>
+        <input type="text" name="nombre" placeholder ="Ingrese el nombre" required><br>
         <label for="descripcion">Descripción</label><br>
-        <textarea class="text" name="descripcion" cols="25" rows="3" required></textarea><br><br>
+        <textarea class="text" name="descripcion" cols="25" rows="3" placeholder = "Ingrese la descripción" required></textarea><br><br>
         <label for="categoria">Categoría</label> <br>
         <select name="categoria" required>
             <option value="Vuelo">Vuelo</option>
@@ -52,7 +52,7 @@ if (isset($_POST['agregar'])) {
             <option value="Vehiculo">Vehículo</option>
         </select><br><br>
         <label for="precio">Precio</label> <br>
-        <input type="number" name="precio" required><br><br>
+        <input type="number" name="precio" placeholder="Ingrese el precio" required><br><br>
         <input class="enviar" type="submit" value="Agregar" name="agregar">
         <a href="../index.php" class="enviar">Volver</a>
     </form>
