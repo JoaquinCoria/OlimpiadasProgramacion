@@ -7,7 +7,7 @@ if (!isset($_SESSION['nombreUsuario'])) {
 }
 
 // Obtiene los ids de los productos del carrito actual del usuario
-$resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && idCarrito IS NULL;");
+$resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && fkIdCompra IS NULL;");
 // Obtiene la información de los productos que tiene en el carrito el 
 $resultadoCarrito = $resultadoProductos->fetch_assoc();
 if($resultadoCarrito!=NULL){
