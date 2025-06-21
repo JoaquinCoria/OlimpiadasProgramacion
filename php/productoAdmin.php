@@ -33,9 +33,9 @@
                 case 'Modificar':
                     echo '<form action="./modificarProductoAdmin.php" method="post">
                         <label for="nombre">Nombre</label><br>
-                        <input type="text" name="nombre" placeholder = "Nombre"><br>
+                        <input type="text" name="nombre" placeholder = "Nombre" value="'.$informacionProducto["nombre"].'"><br>
                         <label for="descripcion">Descripción</label><br>
-                        <textarea class="text" name="descripcion" cols="25" rows="3" placeholder = "Descripción"></textarea><br><br>
+                        <textarea class="text" name="descripcion" cols="25" rows="3" placeholder = "Descripción">'.$informacionProducto["descripcion"].'</textarea><br><br>
                         <label for="categoria">Categoría</label> <br>
                         <select name="categoria" required>
                             <option value="Vuelo">Vuelo</option>
@@ -43,7 +43,7 @@
                             <option value="Vehiculo">Vehículo</option>
                         </select><br><br>
                         <label for="precio">Precio</label> <br>
-                        <input type="number" name="precio" placeholder = "Precio"><br><br>
+                        <input type="number" name="precio" placeholder = "Precio" value="'.intval($informacionProducto["precio"]).'"><br><br>
                         <button type = "submit">Modificar</button>
                     </form>';
                     break;

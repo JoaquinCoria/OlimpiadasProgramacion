@@ -43,8 +43,8 @@ if($resultadoCarrito!=NULL){
             {
                 $precioTotal += $infoCarrito[$i]['precioTotal'];
                 echo "<div class='producto'>";
-                    echo '<input type="checkbox" id="producto'.$infoProductos[$i]['idProducto'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
-                    <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
+                    echo '<input type="checkbox" id="producto'.$infoCarrito[$i]['idCarrito'].'" name="producto[]" value="'.$infoProductos[$i]['idProducto'].'">
+                    <label for="producto'.$infoCarrito[$i]['idCarrito'].'" class="menu">
                     <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
                     <p>' . $infoProductos[$i]['descripcion'] . '</p>
                     <p>$' . $infoProductos[$i]['precio'] . ' </p>';
