@@ -1,6 +1,10 @@
 <?php
     include_once('conexion.php');
     session_start();
+    if(!isset($_SESSION['nombreUsuario'])){
+        header('location:../index.php');
+    }
+
     if(isset($_POST['producto'])){
         foreach($_POST['producto'] as $idProducto){
             $query = "DELETE FROM carrito WHERE fkIdProducto = ".$idProducto." && fkIdUsuario = ".$_SESSION['idUsuario'].";";	
