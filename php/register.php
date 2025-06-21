@@ -41,6 +41,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/register.css">
     <title>Registrarse</title>
     <link rel="stylesheet" href="../style/register.css?3">
 </head>
@@ -53,18 +54,18 @@
         <h1>Registrarse</h1>
         <form action="register.php" method="post" class="Formulario">
             <div class="labelInput">
-                <label for="nombre">Ingrese el usuario</label><br>
+                <label for="nombre">Ingrese el usuario</label>
                 <input class="input" type="text" name="nombreUsuario" placeholder="Usuario" autocomplete="off" required>
             </div>
             <div class="labelInput">
-                <label for="email">Ingrese el email</label><br>
+                <label for="email">Ingrese el email</label>
                 <input class="relleno" type="email" name=mail placeholder="E-mail" autocomplete="off" required>
             </div>
             <div class="labelInput">
-                <label for="clave">Ingrese la contraseña</label><br>
+                <label for="clave">Ingrese la contraseña</label>
                 <input class="relleno" type="password" name="clave" id="" placeholder="password" autocomplete="off" required>
             </div>
-            <button class="btnEnviar" type="submit">Registrarse</button><br><br>
+            <button class="btnEnviar" type="submit">Registrarse</button>
         </form>
     <div class="footer">
                 <a href="../index.php">Volver</a>

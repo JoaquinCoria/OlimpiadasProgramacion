@@ -32,7 +32,7 @@ $result = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css?1">
+    <link rel="stylesheet" href="./style/index.css?2">
     <title>Olimpiada de Programación</title>
 </head>
 <body>
@@ -124,9 +124,13 @@ $result = mysqli_query($conexion, $sql);
         <div class="logo_footer">
             <img src="./img/logo.png" alt="Logo">
         </div>
+        <div class="email">
+            <p>Correo Electrónico</p>
+            <p>sigma@gmail.com</p>
+        </div>
         <div class="atencion_al_cliente">
             <p>Atención al cliente</p>
-            <p>+54 9 2262 34-9131</p>
+            <p>+54 9 2262 34-9131</p> 
         </div>
     </footer>
 </body>

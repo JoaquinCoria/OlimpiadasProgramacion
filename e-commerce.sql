@@ -7,6 +7,7 @@
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -176,6 +177,7 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`, `admin`) VALUES
 (1, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123', 0),
 (2, 'admin', NULL, 'admin@admin', 'Admin123', 1);
+
 
 --
 -- Índices para tablas volcadas
