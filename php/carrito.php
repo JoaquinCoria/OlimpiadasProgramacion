@@ -5,21 +5,24 @@ if (!isset($_SESSION['nombreUsuario'])) {
     header('location:../index.php');
     exit();
 }
+
 // Obtiene los ids de los productos del carrito del usuario
 $resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = '".$_SESSION['idUsuario']."';");
 // Obtiene la información de los productos que tiene en el carrito el 
-$idProductos = [];
 $resultadoCarrito = $resultadoProductos->fetch_assoc();
-$infoCarrito[] = $resultadoCarrito;
-$resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($resultadoCarrito['fkIdProducto']).";");
-$infoProductos[] = $resultadoInfoProductos->fetch_assoc();
-while ($row = $resultadoProductos->fetch_assoc()) {
-    $idProductos[] = $row;
-    $resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($row['fkIdProducto']).";");
+if($resultadoCarrito!=NULL){
+    $idProductos = [];  
+    $infoCarrito[] = $resultadoCarrito;
+    $resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($resultadoCarrito['fkIdProducto']).";");
     $infoProductos[] = $resultadoInfoProductos->fetch_assoc();
-    $infoCarrito[] = $row;
+    while ($row = $resultadoProductos->fetch_assoc()) {
+        $idProductos[] = $row;
+        $resultadoInfoProductos = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto=".intval($row['fkIdProducto']).";");
+        $infoProductos[] = $resultadoInfoProductos->fetch_assoc();
+        $infoCarrito[] = $row;
+    }
+    $precioTotal = 0;
 }
-$precioTotal = 0;
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +36,7 @@ $precioTotal = 0;
     <!-- Lista de productos en el carrito -->
     <div>
         <?php
-        if(count($infoProductos) > 0){
+        if($resultadoCarrito!=NULL){
             echo '<form action="./eliminarProductoCarrito.php" method="post" class="formularioProductos">';
             foreach($infoProductos as $i=>$val)
             {

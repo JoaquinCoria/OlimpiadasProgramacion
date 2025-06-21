@@ -105,9 +105,7 @@
             }
             ?>
             <div class="btnPedir">
-                <button type="submit"  name="pedir" value="pedir">
-                     Volver
-                </button>
+                <a href="../index.php">Volver</a>
                 <button type="submit"  name="pedir" value="pedir">
                     Agregar al carrito
                 </button>
