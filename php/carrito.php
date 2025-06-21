@@ -50,7 +50,12 @@ if($resultadoCarrito!=NULL){
                     <label for="producto'.$infoProductos[$i]['idProducto'].'" class="menu">
                     <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
                     <p>' . $infoProductos[$i]['descripcion'] . '</p>
-                    <p>$' . $infoProductos[$i]['precio'] . ' </p>';
+                    <p>$' . $infoProductos[$i]['precio'] . ' </p>
+                    <p>Fecha inical: '. $infoCarrito[$i]['fechaInicial'].'</p>';
+                    if($infoCarrito[$i]['fechaFinal'] != NULL){
+                        echo '<p>Fecha final: '. $infoCarrito[$i]['fechaFinal'].'</p>';
+                    }
+                    
                     if($infoProductos[$i]['fkIdCategoria'] == 2){
                         echo '<p> Vuelos: ' . $infoCarrito[$i]['cantidad']. '</p>
                         <p>Precio total p/vuelos: $'. $infoCarrito[$i]['precioTotal'].'</p>

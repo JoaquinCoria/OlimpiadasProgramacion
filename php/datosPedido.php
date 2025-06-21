@@ -29,6 +29,7 @@
                 // Si la categoria es vuelo calcula el precio por la cantidad de vuelos
                 if($informacionProducto['fkIdCategoria'] == 2){
                     $_SESSION['cantidadCarrito'] = count($_POST['fecha']); 
+                    $_SESSION['fechas'] = $_POST['fecha'];
                     $_SESSION['precioTotal'] = $_SESSION['cantidadCarrito'] * $informacionProducto['precio'];
                 // Si la categoria es otra calcula el precio por cantidad de días
                 }else{
@@ -36,6 +37,7 @@
                     $diasTotales = (strtotime($_POST['fecha'][1]) - strtotime($_POST['fecha'][0])) / 86400;
                     $_SESSION['cantidadCarrito'] = $diasTotales;
                     $_SESSION['precioTotal'] = $diasTotales * $informacionProducto['precio'];
+                    $_SESSION['fechas'] = $_POST['fecha'];
                 }
                 header("location: ./agregarProductoCarrito.php");
             }else{
@@ -44,6 +46,7 @@
         }elseif($informacionProducto['fkIdCategoria'] == 2){
             $_SESSION['cantidadCarrito'] = count($_POST['fecha']); 
             $_SESSION['precioTotal'] = $_SESSION['cantidadCarrito'] * $informacionProducto['precio'];
+            $_SESSION['fechas'] = $_POST['fecha'];
             header("location: ./agregarProductoCarrito.php");
         }else{
             echo "<div class='msjError'> Fechas inválidas, intente nuevamente </div>";

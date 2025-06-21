@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2025 a las 02:37:01
+-- Tiempo de generación: 21-06-2025 a las 09:36:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -34,15 +34,17 @@ CREATE TABLE `carrito` (
   `precioTotal` float DEFAULT NULL,
   `precioUnidad` float DEFAULT NULL,
   `cantidad` int(5) DEFAULT NULL,
-  `fkIdCompra` int(11) DEFAULT NULL
+  `fkIdCompra` int(11) DEFAULT NULL,
+  `fechaInicial` date DEFAULT NULL,
+  `fechaFinal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `carrito`
 --
 
-INSERT INTO `carrito` (`idCarrito`, `fkIdUsuario`, `fkIdProducto`, `precioTotal`, `precioUnidad`, `cantidad`, `fkIdCompra`) VALUES
-(1, 0, 5, 1000000, 500000, 2, NULL);
+(38, 1, 3, 1749990, 249999, 7, NULL, '2025-06-21', '2025-06-28'),
+(40, 1, 41, 500000, 500000, 1, NULL, '2025-06-27', NULL);
 
 -- --------------------------------------------------------
 
@@ -74,7 +76,6 @@ CREATE TABLE `compra` (
   `idCompra` int(7) NOT NULL,
   `fkIdUsuario` int(7) DEFAULT NULL,
   `precioTotal` float DEFAULT NULL,
-  `fkIdProducto` int(7) DEFAULT NULL,
   `estado` enum('No realizado','Pendiente','Cancelado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -202,8 +203,7 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`idCompra`),
-  ADD KEY `fkIdUsuario` (`fkIdUsuario`),
-  ADD KEY `fkIdProducto` (`fkIdProducto`);
+  ADD KEY `fkIdUsuario` (`fkIdUsuario`);
 
 --
 -- Indices de la tabla `pedidoshistoricos`
@@ -236,12 +236,25 @@ ALTER TABLE `usuario`
 ALTER TABLE `carrito`
   MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
   MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `compra`
+--
+ALTER TABLE `compra`
+  MODIFY `idCompra` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidoshistoricos`
+--
+ALTER TABLE `pedidoshistoricos`
+  MODIFY `idHistorico` int(7) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -253,17 +266,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `carrito`
---
-ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`fkIdCompra`) REFERENCES `compra` (`idCompra`);
+  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
