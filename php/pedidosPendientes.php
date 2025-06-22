@@ -13,6 +13,9 @@
             $infoCarrito[$row['idCompra']][] = $row2;
         }
     }   
+    if($compras == NULL){
+        echo "<script>alert('No se encontraron pedidos pendientes'); window.location = '../index.php'</script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
