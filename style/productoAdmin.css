@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-html, body {
+body {
     font-family: 'Georgia', serif;
     background-color: #f5893d;
     color: #000;
@@ -12,8 +12,7 @@ html, body {
 }
 
 body {
-    display: flex;
-    justify-content: center;
+    align-items: center;
     padding: 40px 20px;
 }
 
@@ -100,9 +99,11 @@ a {
     color: #ff6600;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
+    transition: 150ms ease;
 }
 
 a:hover {
     color: #e45500;
+    transform: scale(1.04);
+    transition: 150ms;
 }
