@@ -15,9 +15,6 @@
     // Toma todos los datos del carrito del usuario
     $query = "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && fkIdCompra IS NULL;";
     $resultadoCarrito = mysqli_query($conexion, $query);
-    // Inserta una nueva fila en compra
-    $query = "INSERT INTO compra(fkIdUsuario, precioTotal, estado) VALUES(".$_SESSION['idUsuario'].", ".$_SESSION['precioCarrito'].", 'Pendiente')";
-    $query = mysqli_query($conexion,$query);
     // Toma el idCompra de la compra actual
     $query = "SELECT max(idCompra) FROM compra WHERE fkIdUsuario = ".$_SESSION['idUsuario'].";";
     $resultadoIdCompra = mysqli_query($conexion, $query);
@@ -37,7 +34,7 @@
         <title>Pedido realizado</title>
     </head>
     <body>
-        <p>Tu pedido ahora esta pendiente a ser realizado</p>
+        <p>Tu pedido ahora está en estado pendiente</p>
         <div class="container">
             <h1>Informe del pedido</h1>
             <div class="producto">

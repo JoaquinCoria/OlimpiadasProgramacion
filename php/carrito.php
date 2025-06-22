@@ -5,6 +5,10 @@ if (!isset($_SESSION['nombreUsuario'])) {
     header('location:../index.php');
     exit();
 }
+if($_SESSION['admin'] == TRUE){
+    header('location:../index.php');
+    exit();
+}
 
 // Obtiene los ids de los productos del carrito actual del usuario
 $resultadoProductos =  mysqli_query($conexion, "SELECT * FROM carrito WHERE fkIdUsuario = ".$_SESSION['idUsuario']." && fkIdCompra IS NULL;");
@@ -47,7 +51,12 @@ if($resultadoCarrito!=NULL){
                     <label for="producto'.$infoCarrito[$i]['idCarrito'].'" class="menu">
                     <p class="soloquieto">' . $infoProductos[$i]['nombre'] . '</p>
                     <p>' . $infoProductos[$i]['descripcion'] . '</p>
-                    <p>$' . $infoProductos[$i]['precio'] . ' </p>';
+                    <p>$' . $infoProductos[$i]['precio'] . ' </p>
+                    <p>Fecha inical: '. $infoCarrito[$i]['fechaInicial'].'</p>';
+                    if($infoCarrito[$i]['fechaFinal'] != NULL){
+                        echo '<p>Fecha final: '. $infoCarrito[$i]['fechaFinal'].'</p>';
+                    }
+                    
                     if($infoProductos[$i]['fkIdCategoria'] == 2){
                         echo '<p> Vuelos: ' . $infoCarrito[$i]['cantidad']. '</p>
                         <p>Precio total p/vuelos: $'. $infoCarrito[$i]['precioTotal'].'</p>
@@ -66,7 +75,7 @@ if($resultadoCarrito!=NULL){
             $_SESSION['productosCarrito'] = $infoProductos;
             $_SESSION['informacionCarrito'] = $infoCarrito;
             ?>
-            <form action="realizarPedido.php" method="post">
+            <form action="insertarCompra.php" method="post">
                 <input type="submit" name="pedido" value="Realizar pedido">
             </form>
             <?php
