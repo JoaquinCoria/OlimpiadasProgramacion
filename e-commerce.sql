@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-06-2025 a las 09:36:59
+-- Tiempo de generación: 22-06-2025 a las 02:02:33
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -69,7 +69,7 @@ CREATE TABLE `compra` (
   `idCompra` int(7) NOT NULL,
   `fkIdUsuario` int(7) DEFAULT NULL,
   `precioTotal` float DEFAULT NULL,
-  `estado` enum('No realizado','Pendiente','Cancelado') DEFAULT NULL
+  `estado` enum('No realizado','Pendiente','Cancelado','Realizado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -82,7 +82,7 @@ CREATE TABLE `pedidoshistoricos` (
   `idHistorico` int(7) NOT NULL,
   `fechaDelPedido` date DEFAULT NULL,
   `fkIdUsuario` int(7) DEFAULT NULL,
-  `fkIdProducto` int(7) DEFAULT NULL
+  `fkIdCompra` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -170,7 +170,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`, `admin`) VALUES
 (1, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123', 0),
-(2, 'admin', NULL, 'admin@admin', 'Admin123', 1);
+(2, 'admin', NULL, 'admin@admin', 'Admin123', 1),
+(3, 'Joaquin2', NULL, 'joaquin@gmail.com', 'Joaquin123', 0);
 
 --
 -- Índices para tablas volcadas
@@ -204,7 +205,7 @@ ALTER TABLE `compra`
 ALTER TABLE `pedidoshistoricos`
   ADD PRIMARY KEY (`idHistorico`),
   ADD KEY `fkIdUsuario` (`fkIdUsuario`),
-  ADD KEY `fkIdProducto` (`fkIdProducto`);
+  ADD KEY `FK_Historico_Compra` (`fkIdCompra`);
 
 --
 -- Indices de la tabla `producto`
@@ -257,7 +258,17 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `pedidoshistoricos`
+--
+ALTER TABLE `pedidoshistoricos`
+  ADD CONSTRAINT `FK_Historico_Compra` FOREIGN KEY (`fkIdCompra`) REFERENCES `compra` (`idCompra`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
