@@ -1,4 +1,3 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -7,76 +6,76 @@
 
 body {
     font-family: 'Georgia', serif;
-    background-color: #f5893d; /* naranja cálido de fondo */
+    background-color: #f5893d;
     color: #000;
-    display: flex;
-    justify-content: center;
+    min-height: 100vh;
+}
+
+body {
     align-items: center;
-    height: 100vh;
+    padding: 40px 20px;
 }
 
-.imagen {
-    display: flex;
-    justify-content: center;
-    margin: 0.005vw ;
-
-}
-
-.imagen img {
-    width: 150px; 
-
-}
-
-.contenedor {
+.container {
     background-color: #fff5eb;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    max-width: 90%;
+    width: 400px;
+    max-width: 100%;
+    margin: auto; 
 }
 
-.titulo {
-    font-size: 28px;
-    font-weight: bold;
+.tarjetaProducto {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
+}
+
+.tarjetaProducto h1 {
+    font-size: 26px;
     color: #ff6600;
+    margin-bottom: 10px;
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.labelInput {
-    display: flex;
-    flex-direction: column;
-}
-
-.labelInput label {
+.tarjetaProducto p {
+    margin-bottom: 10px;
     font-size: 16px;
-    margin-bottom: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: bold;
     color: #333;
 }
 
-.relleno {
+form input[type="text"],
+form input[type="number"],
+form textarea,
+form select {
     padding: 10px;
     border: 2px solid #ffaf7a;
     border-radius: 10px;
     background-color: #fff;
-    font-size: 16px;
+    font-size: 14px;
 }
 
-.relleno:focus {
+form input:focus,
+form textarea:focus,
+form select:focus {
     border-color: #ff6600;
     outline: none;
 }
 
-.btnEnviar {
+form button,
+form input[type="submit"] {
     padding: 12px;
-    margin-top: 10px;
     background-color: #ff6600;
     color: white;
     border: none;
@@ -87,27 +86,24 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.btnEnviar:hover {
+form button:hover,
+form input[type="submit"]:hover {
     background-color: #e45500;
 }
 
-.footer {
-    display: flex;
-    justify-content: space-between;
+a {
+    display: inline-block;
     margin-top: 20px;
-}
-
-.footer a {
+    text-align: center;
     font-size: 14px;
-    font-weight: bolder;
-    color: #ffffff;
+    color: #ff6600;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
-    margin-right: 50px;
-    margin-left: 14px;
+    transition: 150ms ease;
 }
 
-.footer a:hover {
+a:hover {
     color: #e45500;
+    transform: scale(1.04);
+    transition: 150ms;
 }

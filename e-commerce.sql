@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2025 a las 23:30:39
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 22-06-2025 a las 02:02:33
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,11 @@ CREATE TABLE `carrito` (
   `fkIdUsuario` int(7) DEFAULT NULL,
   `fkIdProducto` int(7) DEFAULT NULL,
   `precioTotal` float DEFAULT NULL,
-  `precioUnidad` float DEFAULT NULL
+  `precioUnidad` float DEFAULT NULL,
+  `cantidad` int(5) DEFAULT NULL,
+  `fkIdCompra` int(11) DEFAULT NULL,
+  `fechaInicial` date DEFAULT NULL,
+  `fechaFinal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -64,9 +68,8 @@ INSERT INTO `categoria` (`idCategoria`, `nombre`) VALUES
 CREATE TABLE `compra` (
   `idCompra` int(7) NOT NULL,
   `fkIdUsuario` int(7) DEFAULT NULL,
-  `email` varchar(20) DEFAULT NULL,
   `precioTotal` float DEFAULT NULL,
-  `fkIdProducto` int(7) DEFAULT NULL
+  `estado` enum('No realizado','Pendiente','Cancelado','Realizado') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -79,7 +82,7 @@ CREATE TABLE `pedidoshistoricos` (
   `idHistorico` int(7) NOT NULL,
   `fechaDelPedido` date DEFAULT NULL,
   `fkIdUsuario` int(7) DEFAULT NULL,
-  `fkIdProducto` int(7) DEFAULT NULL
+  `fkIdCompra` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -157,8 +160,18 @@ CREATE TABLE `usuario` (
   `nombre` varchar(20) DEFAULT NULL,
   `apellido` varchar(20) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL,
-  `contrasenia` varchar(18) DEFAULT NULL
+  `contrasenia` varchar(18) DEFAULT NULL,
+  `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `nombre`, `apellido`, `email`, `contrasenia`, `admin`) VALUES
+(1, 'Joaquin', NULL, 'joaquin@gmail.com', 'Joaquin123', 0),
+(2, 'admin', NULL, 'admin@admin', 'Admin123', 1),
+(3, 'Joaquin2', NULL, 'joaquin@gmail.com', 'Joaquin123', 0);
 
 --
 -- Índices para tablas volcadas
@@ -170,7 +183,8 @@ CREATE TABLE `usuario` (
 ALTER TABLE `carrito`
   ADD PRIMARY KEY (`idCarrito`),
   ADD KEY `fkIdUsuario` (`fkIdUsuario`),
-  ADD KEY `fkIdProducto` (`fkIdProducto`);
+  ADD KEY `fkIdProducto` (`fkIdProducto`),
+  ADD KEY `fkIdCompra` (`fkIdCompra`);
 
 --
 -- Indices de la tabla `categoria`
@@ -183,8 +197,7 @@ ALTER TABLE `categoria`
 --
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`idCompra`),
-  ADD KEY `fkIdUsuario` (`fkIdUsuario`),
-  ADD KEY `fkIdProducto` (`fkIdProducto`);
+  ADD KEY `fkIdUsuario` (`fkIdUsuario`);
 
 --
 -- Indices de la tabla `pedidoshistoricos`
@@ -192,7 +205,7 @@ ALTER TABLE `compra`
 ALTER TABLE `pedidoshistoricos`
   ADD PRIMARY KEY (`idHistorico`),
   ADD KEY `fkIdUsuario` (`fkIdUsuario`),
-  ADD KEY `fkIdProducto` (`fkIdProducto`);
+  ADD KEY `FK_Historico_Compra` (`fkIdCompra`);
 
 --
 -- Indices de la tabla `producto`
@@ -215,13 +228,47 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCarrito` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `idCategoria` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `compra`
+--
+ALTER TABLE `compra`
+  MODIFY `idCompra` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT de la tabla `pedidoshistoricos`
+--
+ALTER TABLE `pedidoshistoricos`
+  MODIFY `idHistorico` int(7) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `producto`
+--
+ALTER TABLE `producto`
+  MODIFY `idProducto` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `pedidoshistoricos`
+--
+ALTER TABLE `pedidoshistoricos`
+  ADD CONSTRAINT `FK_Historico_Compra` FOREIGN KEY (`fkIdCompra`) REFERENCES `compra` (`idCompra`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

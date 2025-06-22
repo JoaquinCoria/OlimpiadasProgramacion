@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Georgia', serif;
+    background-color: #f5893d;
+    color: #000;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+div {
+    background-color: #fff5eb;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 500px;
+    max-width: 100%;
+}
+
+.producto {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 2px solid #ffaf7a;
+    transition: transform 0.2s ease;
+}
+
+.producto:hover {
+    transform: scale(1.02);
+}
+
+.menu {
+    display: block;
+    cursor: pointer;
+}
+
+.menu p {
+    margin-bottom: 6px;
+}
+
+.soloquieto {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+.eliminar,
+input[type="submit"] {
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.eliminar:hover,
+input[type="submit"]:hover {
+    background-color: #e45500;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #ff6600;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e45500;
+}
+
+p:last-of-type {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 15px;
+    color: #333;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+.producto {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.menu {
+    display: block;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #ffaf7a;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.menu:hover {
+    transform: scale(1.02);
+}
+
+input[type="checkbox"]:checked + .menu {
+    background-color: #ffe0c2;
+    border-color: #ff6600;
+}
+
+.menu p {
+    margin-bottom: 6px;
+}
+
+.soloquieto {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff6600;
+}

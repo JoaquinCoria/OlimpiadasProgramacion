@@ -86,6 +86,8 @@ header {
 }
 .carrito a:hover{
     background-color:#222;
+    box-shadow: rgba(0, 0, 0, 0.534) 1px 1px 5px;
+    color:#ff954e;
     transition: 300ms;
     transform: scale(1.1);
 }
@@ -116,11 +118,15 @@ header {
     filter: invert(99%) sepia(1%) saturate(508%) hue-rotate(194deg) brightness(119%) contrast(100%);
     transition: transform 0.3s;
 }
+.usuario a:hover{
+    color: white;
+    
+}
 .cerrarSesion{
     background-color: #ffc6a1;
     padding: 2px;
     padding-left: 5px;
-    width: 50%;
+    width: 55%;
     border-bottom-right-radius:10px;
     border-bottom-left-radius:10px;
     box-shadow: black 2px 2px 2px;
@@ -129,7 +135,7 @@ header {
 }
 
 .cerrarSesion:hover{
-    background-color:#444;
+    background-color:#222;
     text-shadow: black 1px 1px 1px;
 }
 
@@ -153,15 +159,23 @@ footer {
     height: 80px;
 }
 
+.email {
+    text-align: center;
+    font-size: 15px;
+}
+
+.email p:last-child {
+    font-weight: bold;
+}
+
 .atencion_al_cliente {
     text-align: right;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .atencion_al_cliente p:last-child {
     font-weight: bold;
 }
-
 /* Estilo para hover en iconos de navegación */
 .iconos button{
     border: none;
@@ -190,14 +204,16 @@ footer {
 /* agranda imagen de usuario al pasar el mouse */
 
 .container{
+    height: auto;
     display: flex;
     flex-direction: column;
 }
 .formularioProductos{
     display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
 }
 input[type="checkbox"] {
     display: none;
@@ -206,13 +222,15 @@ input[type="checkbox"] {
     background-color: #ffdac2;
     color: black;
     border-radius: 7%/14%;
-    height: 10vh;
+    min-height: 10vh;
+    height: auto;
     width: 10vw;
     margin: 10px;
     padding: 10px;
     display: flex;
     box-sizing: border-box;
     transition: background-color 300ms;
+    justify-content: center;
 }
 .producto .nombreProducto{
     font-weight: bolder;
