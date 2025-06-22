@@ -31,20 +31,23 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../style/realizarPedido.css">
         <title>Pedido realizado</title>
     </head>
     <body>
-        <p>Tu pedido ahora está en estado pendiente</p>
+        <p class="msj">Tu pedido ahora está en estado pendiente</p>
         <div class="container">
             <h1>Informe del pedido</h1>
-            <div class="producto">
+            <div class="productos">
                 <?php
                     foreach($_SESSION['productosCarrito'] as $i=>$value){
+                        echo '<div class="producto">';
                         echo '<p>Nombre: '.$value['nombre'].'</p>';
                         echo '<p>Descripción: '.$value['descripcion'].'</p>';
                         echo '<p>Precio: $'.$value['precio'].'</p>';
                         echo '<p>Cantidad: '.$_SESSION['informacionCarrito'][$i]['cantidad'].'</p>';
                         echo '<p>Precio total p/producto: $'.$_SESSION['informacionCarrito'][$i]['precioTotal'].'</p>';
+                        echo '</div>';
                     }
                 ?>
             </div>

@@ -34,10 +34,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/pedidospendientes.css">
     <title>Modificar pedido</title>
 </head>
 <body>
-    <div class="pedido">
+    <a href="./pedidosPendientes.php">Volver</a>
+    <div class="compra">
         <h1>Pedido</h1>
         <form action="modificarPedidoPendiente.php" method="post">
         <?php
@@ -58,6 +60,7 @@
             echo "<p>Precio total/producto: ".$infoCarrito[$i]['precioTotal']."</p>";
             $datos =  $infoCarrito[$i]['fkIdProducto'] . "-" . $infoCarrito[$i]['fkIdCompra'];
             echo '<button type="submit" name="eliminar" value="'.$datos .'">Eliminar producto</button>';
+            echo '</div>';
         }
         ?>
         </form>

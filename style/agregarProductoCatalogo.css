@@ -30,8 +30,8 @@ form {
 }
 
 form label {
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 1.05rem;
+    font-weight: bolder;
     color: #333;
 }
 

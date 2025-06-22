@@ -22,37 +22,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/pedidosPendientes.css">
     <title>Pedidos pendientes</title>
 </head>
 <body>
-
-    <!-- Temporal para entender algo (eliminar) -->
-    <style>
-        .compra{
-            border: solid orange 3px;
-            margin-bottom: 10px
-        }
-        .producto{
-            border: solid black 1px;
-        }
-    </style>
-    <div class = "producto">
-
-    </div>
+    <a href="../index.php">
+        Volver
+    </a>
     <?php
     foreach($compras as $i=>$value){
         echo "<div class='compra'>";
-            echo "Compra pendiente N°".($i+1)."<br>";
+            echo "<h2>Compra pendiente N°".($i+1)."</h2>";
             foreach($infoCarrito[$value['idCompra']] as $i2=>$idProductos)
             {
                 $resultadoProductos = mysqli_query($conexion,"SELECT * FROM producto WHERE idProducto = ".$idProductos['fkIdProducto'].";");
                 while($row = $resultadoProductos->fetch_assoc()){
                     $infoProducto[] = $row;
                     echo'<div class="producto">
-                        <p> Nombre: '.$row['nombre'].'</p>
-                        <p> Descripción: '.$row['descripcion'].'</p>
-                        <p> Precio p/unidad: $'.$row['precio'].'</p> 
-                        <p> Cantidad: '.$idProductos['cantidad'].' </p>   
+                        <p><b> Nombre: </b>'.$row['nombre'].'</p>
+                        <p><b> Descripción:</b> '.$row['descripcion'].'</p>
+                        <p><b>Precio p/unidad:</b>$'.$row['precio'].'</p> 
+                        <p><b>Cantidad: </b>'.$idProductos['cantidad'].' </p>   
                         <p> Precio total del producto: $'.$idProductos['precioTotal'].' </p>  
                     </div>
                     ';

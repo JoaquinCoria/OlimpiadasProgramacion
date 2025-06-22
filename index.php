@@ -32,7 +32,7 @@ $result = mysqli_query($conexion, $sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/index.css?2">
+    <link rel="stylesheet" href="./style/index.css?3">
     <title>Olimpiada de Programación</title>
 </head>
 <body>
@@ -76,7 +76,7 @@ $result = mysqli_query($conexion, $sql);
                     </div>';
                     echo '<div class="carrito">
                        <a href="./php/agregarProductoCatalogo.php">
-                           Agregar producto
+                           <img src="./img/agregarB.png" alt="Agregar">
                        </a>
                    </div>';   
                 }
