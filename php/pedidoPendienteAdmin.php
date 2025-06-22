@@ -28,21 +28,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/pedidoPendienteAdmin.css">
     <title>Pedidos pendientes</title>
 </head>
 <body>
-    <!-- BORRAR -->
-    <style>
-        .pedido{
-            border:solid blue 2px;  
-            display:flex;
-            flex-direction:row;
-        }
-        .producto{
-            border: solid green 1px;
-        }
-    </style>
     <h1>Pedidos pendientes</h1>
+    <a href="../index.php">Volver</a>
     <?php
     foreach($pedidosPendientes as $i=>$value){
         echo '<div class="pedido">';
@@ -50,8 +41,7 @@
             <p> E-mail: '.$usuarios[$i]['email'].'</p>';
             foreach($productos[$value['idCompra']] as $i2=>$campos){
                 echo '<div class="producto">';
-                echo'<p> Producto </p>
-                    <p>'.$campos['nombre'].'</p>
+                echo'<p>'.$campos['nombre'].'</p>
                     <p>Fecha 1: '.$carritos[$value['idCompra']][$i2]['fechaInicial'].'</p>';
                     if($carritos[$value['idCompra']][$i]['fechaFinal']!=NULL){
                         echo '<p>Fecha 2: '.$carritos[$value['idCompra']][$i2]['fechaFinal'].'</p>';
@@ -63,10 +53,10 @@
             echo'<p>Importe total del pedido: $'.$value['precioTotal'].'</p>';
             $ids = $value['idCompra'] ."-". $usuarios[$i]['idUsuario'];
             echo '<form action="./confirmarPedidoAdmin.php" method="post">
-                <button name ="confirmar" value = "'.$ids.'">Realizar pedido</button>
+                <button type ="submit" name ="confirmar" value = "'.$ids.'">Realizar pedido</button>
             </form>';
             echo '<form action="./eliminarPedidoPendiente.php" method="post">
-                <button name="eliminar" value= "'.$ids.'">Cancelar pedido</button>
+                <button type="submit" name="eliminar" value= "'.$ids.'">Cancelar pedido</button>
             </form>';
         echo '</div>';
     }

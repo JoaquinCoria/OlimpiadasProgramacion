@@ -86,6 +86,7 @@ header {
 }
 .carrito a:hover{
     background-color:#222;
+    box-shadow: rgba(0, 0, 0, 0.534) 1px 1px 5px;
     color:#ff954e;
     transition: 300ms;
     transform: scale(1.1);
@@ -134,7 +135,7 @@ header {
 }
 
 .cerrarSesion:hover{
-    background-color:#444;
+    background-color:#222;
     text-shadow: black 1px 1px 1px;
 }
 
@@ -175,7 +176,6 @@ footer {
 .atencion_al_cliente p:last-child {
     font-weight: bold;
 }
-
 /* Estilo para hover en iconos de navegación */
 .iconos button{
     border: none;
